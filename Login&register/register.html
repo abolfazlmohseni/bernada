@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../asset/Login&register/css/regester-style.css">
+    <link rel="stylesheet" href="../asset/setting/css/setting.css">
+    <title>ثبت نام در برنادا</title>
 </head>
 
 <body>
@@ -15,30 +17,32 @@
             </div>
             <div class="regesterForm-form">
                 <form>
-                    <input type="text" placeholder="نام" />
-                    <input type="text" placeholder="نام خانوادگی" />
-                    <input type="text" placeholder="شماره همراه" />
-                    <select name="maghta" class="maghta">
-                        <option value="ebtedayi">مقطع تحصیلی</option>
+                    <input type="text" placeholder="نام" class="userName input"/>
+                    <input type="text" placeholder="نام خانوادگی" class="userLastName input"/>
+                    <input type="number" placeholder="شماره همراه" class="userNumberPhone input"/>
+                    <select name="maghta" class="userMaghta input">
+                        <option value="entekhab">مقطع تحصیلی</option>
                         <option value="ebtedayi">ابتدایی</option>
                         <option value="motevaseteOne">متوسطه اول</option>
                         <option value="motevaseteTwo">متوسطه دوم</option>
                     </select>
-                    <select name="" id="">
-                        <option value="">رشته تحصیلی</option>
-                        <option value="">انسانی</option>
-                        <option value="">تجربی</option>
-                        <option value="">ریاضی</option>
+                    <select name="" id="reshteh" class="userReshte input">
+                        <option value="entekhab">رشته تحصیلی</option>
+
                     </select>
-                    <select name="paye" class="paye">
-                        <option value="">پایه تحصیلی</option>
+                    <select name="paye" class="userPaye input">
+                        <option value="entekhab">پایه تحصیلی</option>
+
                     </select>
+                    <div class="loginbox">
+                        <p>حساب دارید؟</p><a href="./login.html">وارد شوید</a>
+                    </div>
                     <input type="submit" value="ثبت نام">
                 </form>
             </div>
         </div>
     </div>
-    <!-- <script type="module" src="../asset/Login&register/js/regester.js"></script> -->
+    <script type="module" src="../asset/Login&register/js/regester.js"></script>
 </body>
 
 </html>
