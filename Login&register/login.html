@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../asset/Login&register/css/login-style.css">
+    <link rel="stylesheet" href="../asset/setting/css/setting.css">
     <title>Document</title>
 </head>
+
 <body>
-    <form id="formLogin">
-        <input type="number" placeholder="شماه همراه" class="userNumberPhone"/>
-        <input type="password" placeholder="گذرواژه" class="userPass"/>
-    <input type="submit" value="ورود"/>
-    </form>
+    <div class="conteyner">
+        <div class="login-form">
+
+            <div class="loginForm-titel">
+                <p>ورود به برنادا</p>
+            </div>
+            <form id="formLogin">
+                <input type="number" placeholder="شماه همراه" class="userNumberPhone" />
+                <input type="password" placeholder="گذرواژه" class="userPass" />
+                <div class="noAcout">
+                    <p>حسابی ندارید؟</p>
+                    <a href="./register.html">ثبت نام کنید</a>
+                </div>
+                <input type="submit" value="ورود" />
+            </form>
+        </div>
+
+    </div>
+
     <script type="module" src="../asset/Login&register/js/login.js"></script>
 </body>
+
 </html>

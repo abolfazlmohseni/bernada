@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
     const { username, lastName, numberPhone, maghta, reshteh, paye, password } = req.body;
   
     try {
-      // بررسی می‌کنیم که آیا کاربر قبلاً ثبت‌نام کرده است یا خیر
+      // بررسی می‌کنیم که آیا کاربر قبلاً ثبت‌ نام کرده است یا خیر
       const userExists = await User.findOne({ numberPhone });
       if (userExists) {
         return res.status(400).send('User with this phone number already exists');
