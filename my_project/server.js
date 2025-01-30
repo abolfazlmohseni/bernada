@@ -9,6 +9,8 @@ require('dotenv').config();
 const authRoutes = require('./routes/auth');  // اینجا روت‌ها را وارد می‌کنیم
 
 const app = express();
+app.use(express.json({ limit: '10mb', encoding: 'utf-8' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // استفاده از middleware ها
 app.use(cors());
@@ -20,7 +22,7 @@ app.use('/api/auth', authRoutes);
 // پورت سرور
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
 
 // اتصال به MongoDB
