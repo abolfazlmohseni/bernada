@@ -5,8 +5,7 @@ body {
 
 .conteyner {
     max-width: 1280px;
-    height: 100vh;
-    /* margin-top: 3rem; */
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -27,18 +26,16 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 50%;
-    margin-top: 1rem;
+    height: 90%;
+    margin-top: auto;
 }
 
-.menu-topSection__item,
-.menu-bottomSection__item {
+.menu-topSection__item{
     width: 100%;
     height: 40px;
 }
 
-.menu-topSection__item a,
-.menu-bottomSection__item a {
+.menu-topSection__item a {
     color: #333;
     text-decoration: none;
     display: flex;
@@ -48,8 +45,7 @@ body {
     font-size: 18px;
 }
 
-.menu-topSection__item a p,
-.menu-bottomSection__item a p {
+.menu-topSection__item a p {
     margin: 0;
     margin-right: 15px;
 }
@@ -58,19 +54,9 @@ body {
     font-size: 25px;
 }
 
-.topSEction__item-icon {}
-
-.topSEction__item-text {}
-
-.menu-bottomSection {}
-
 .menu-bottomSection {
     margin-top: 2rem;
 }
-
-.bottomSEction__item-icon {}
-
-.bottomSEction__item-text {}
 
 .main {
     width: 83%;
@@ -99,26 +85,21 @@ header {
 .profile {
     height: 64px;
     width: 64px;
-    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .profile img {
     border-radius: 50px;
 }
 
-.userProfile {}
+
 
 .header-rightSide {
     display: flex;
-    margin-right: 25px;
+    margin-left: 25px;
     align-items: center;
 }
 
-.setting {}
-
-.bi {}
-
-.bi-gear {}
 
 .notification {
     margin-right: 10px;
@@ -128,7 +109,6 @@ header {
     color: #333;
 }
 
-.bi-bell {}
 
 
 
@@ -137,43 +117,83 @@ header {
 
 
 
+/* 
 
 
 #heatmap-container {
     display: grid;
-    grid-template-columns: repeat(53, 12px); /* 53 هفته */
-    gap: 2px; /* فاصله بین سلول‌ها */
+    grid-template-columns: repeat(53, 12px); /* 53 هفته 
+    gap: 2px;  فاصله بین سلول‌ها 
   }
   
   .heatmap-day {
     width: 12px;
     height: 12px;
-    background-color: #ebedf0; /* رنگ پیش‌فرض */
+    background-color: #ebedf0; /* رنگ پیش‌فرض 
     border-radius: 2px;
   }
   
   .heatmap-day.level-1 {
-    background-color: #9be9a8; /* رنگ کمترین فعالیت */
+    background-color: #9be9a8; /* رنگ کمترین فعالیت 
   }
   
   .heatmap-day.level-2 {
-    background-color: #40c463; /* رنگ فعالیت متوسط */
+    background-color: #40c463; /* رنگ فعالیت متوسط 
   }
   
   .heatmap-day.level-3 {
-    background-color: #30a14e; /* رنگ فعالیت زیاد */
+    background-color: #30a14e; /* رنگ فعالیت زیاد 
   }
   
   .heatmap-day.level-4 {
-    background-color: #216e39; /* رنگ بیشترین فعالیت */
-  }
-  
+    background-color: #216e39; /* رنگ بیشترین فعالیت 
+  } */
 
 
 
+.sectionOne {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
+.today-work,
+.Overdue-work {
+    width: 45%;
+    height: 350px;
+    background-color: #e1e8eb;
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px #00000025, -1px -1px 8px #00000025;
+    overflow: auto;
 
+}
 
+.today-work__head,
+.Overdue-work__head {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+.today-work__items,
+.Overdue-work__items {
+    display: flex;
+    align-items: center;
+    width: 98%;
+    padding: 0 1%;
+    justify-content: space-between;
+}
+
+.Overdue-work__icon,
+.today-work__icon {
+    color: #000;
+    text-decoration: none;
+}
 
 
 

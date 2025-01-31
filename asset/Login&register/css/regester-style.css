@@ -34,6 +34,7 @@ form {
 }
 
 input[type="text"],
+input[type="password"],
 input[type="number"] {
     border: none;
     outline: none;
@@ -81,6 +82,22 @@ select {
     margin-right: 2px;
 }
 
+.err {
+    color: #d52027;
+    box-shadow: 1px 1px 4px 2px #d5202750;
+
+}
+
+.errtext {
+    margin: 0;
+    color: #d52027;
+    width: 79%;
+    display: none;
+}
+.show{
+    display: block !important;
+}
+
 @media only screen and (max-width: 425px) {
     .regesterForm {
         width: 400px;
@@ -88,6 +105,7 @@ select {
 
     input[type=text],
     input[type="number"],
+    input[type="password"],
     select {
         width: 90%;
     }
