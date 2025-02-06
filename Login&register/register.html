@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <div class="success">
+        <div class="success-icon"></div>
+    </div>
     <div class="conteyner">
         <div class="regesterForm">
             <div class="regesterForm-titel">
@@ -17,26 +20,15 @@
             </div>
             <div class="regesterForm-form">
                 <form>
-                    <input type="text" placeholder="نام" class="userName input" required/>
-                    <input type="text" placeholder="نام خانوادگی" class="userLastName input" required/>
-                    <input type="number" placeholder="شماره همراه" class="userNumberPhone input" required/>
+                    <input type="text" placeholder="نام" class="userName input" />
+                    <p class="errtext errtextName">مقدار نامعتبر</p>
+                    <input type="text" placeholder="نام خانوادگی" class="userLastName input" />
+                    <p class="errtext errtextLastname">مقدار نامعتبر</p>
+                    <input type="number" placeholder="شماره همراه" class="userNumberPhone input" />
                     <p class="errtextNumberPhone errtext">شماره نامعتبر است</p>
-                    <input type="password" placeholder="گذرواژه" class="userPass input" required/>
+                    <input type="password" placeholder="گذرواژه" class="userPass input" />
                     <p class="errtextPassword errtext">گذواژه باید بیشتر از 8 کاراکتر و شامل اعداد و حروف باشد</p>
-                    <select name="maghta" class="userMaghta input" required>
-                        <option value="entekhab">مقطع تحصیلی</option>
-                        <option value="ebtedayi">ابتدایی</option>
-                        <option value="motevaseteOne">متوسطه اول</option>
-                        <option value="motevaseteTwo">متوسطه دوم</option>
-                    </select>
-                    <select name="" id="reshteh" class="userReshte input" required>
-                        <option value="entekhab">رشته تحصیلی</option>
-
-                    </select>
-                    <select name="paye" class="userPaye input" required>
-                        <option value="entekhab">پایه تحصیلی</option>
-
-                    </select>
+                   
                     <div class="loginbox">
                         <p>حساب دارید؟</p><a href="./login.html">وارد شوید</a>
                     </div>

@@ -1,85 +1,16 @@
 let $ = document;
-const userMaghta = $.querySelector(".userMaghta");
-const userPaye = $.querySelector(".userPaye");
-const reshteh = $.querySelector("#reshteh");
+
 const formRegister = $.querySelector("form");
 const userName = $.querySelector(".userName");
 const userLastName = $.querySelector(".userLastName");
 const userNumberPhone = $.querySelector(".userNumberPhone");
-const userReshte = $.querySelector(".userReshte");
+
 const userPass = $.querySelector(".userPass");
 const errtextNumberPhone = $.querySelector(".errtextNumberPhone");
 const errtextPassword = $.querySelector(".errtextPassword")
-// پایه ها
-// پایه ها
-let ebtedayi = [
-  'اول',
-  'دوم',
-  'سوم',
-  'چهارم',
-  'پنجم',
-  'ششم',
-]
+const errtextName = $.querySelector(".errtextName");
+const errtextLastname = $.querySelector(".errtextLastname");
 
-let motevaseteOne = [
-  'هفتم',
-  'هشتم',
-  'نهم'
-]
-
-let motevaseteTwo = [
-  'دهم',
-  'یازدهم',
-  'دوازدهم'
-]
-let reshteha = [
-  'انسانی',
-  'تجربی',
-  'ریاضی'
-]
-userMaghta.addEventListener('change', function () {
-  if (userMaghta.value == 'ebtedayi') {
-    reshteh.style.display = "none";
-    userPaye.innerHTML = '';
-    let htmlopshon = `
-        <option>${ebtedayi[0]}</option>
-        <option>${ebtedayi[1]}</option>
-        <option>${ebtedayi[2]}</option>
-        <option>${ebtedayi[3]}</option>
-        <option>${ebtedayi[4]}</option>
-        <option>${ebtedayi[5]}</option>
-        `;
-    userPaye.insertAdjacentHTML("beforeend", htmlopshon);
-  } else if (userMaghta.value == 'motevaseteOne') {
-    reshteh.style.display = "none";
-    userPaye.innerHTML = '';
-    let htmlopshon = `
-        <option>${motevaseteOne[0]}</option>
-        <option>${motevaseteOne[1]}</option>
-        <option>${motevaseteOne[2]}</option>
-        `;
-    userPaye.insertAdjacentHTML("beforeend", htmlopshon);
-  } else {
-    reshteh.style.display = "block";
-    reshteh.innerHTML = '';
-    userPaye.innerHTML = '';
-
-    let reshtehopshon = `
-        <option>${reshteha[0]}</option>
-        <option>${reshteha[1]}</option>
-        <option>${reshteha[2]}</option>
-        `;
-
-    let htmlopshon = `
-        <option>${motevaseteTwo[0]}</option>
-        <option>${motevaseteTwo[1]}</option>
-        <option>${motevaseteTwo[2]}</option>
-        `;
-    userPaye.insertAdjacentHTML("beforeend", htmlopshon);
-    reshteh.insertAdjacentHTML("beforeend", reshtehopshon);
-
-  };
-});
 
 function Confirmationnumber(numberPhone) {
 
@@ -108,7 +39,23 @@ function validatePassword(password) {
     errtextPassword.classList.add("show");
   }
 }
+function checkValueName(val) {
+  if (val.length >= 3) {
+    errtextName.classList.remove("show")
+    return val
+  } else {
+    errtextName.classList.add("show")
+  }
 
+}
+function checkValueLastname(val) {
+  if (val.length >= 3) {
+    errtextLastname.classList.remove("show")
+    return val
+  } else {
+    errtextLastname.classList.add("show")
+  }
+}
 
 
 
@@ -118,16 +65,13 @@ formRegister.addEventListener("submit", async event => {
 
 
   const userInfo = {
-    username: userName.value,
-    lastName: userLastName.value,
+    username: checkValueName(userName.value),
+    lastName: checkValueLastname(userLastName.value),
     numberPhone: Confirmationnumber(userNumberPhone.value),
-    maghta: userMaghta.value,
-    reshteh: userReshte.value,
-    paye: userPaye.value,
     password: validatePassword(userPass.value)
   }
 
-  if (userInfo.numberPhone != undefined & userInfo.password != undefined) {
+  if (userInfo.numberPhone != undefined & userInfo.password != undefined & userInfo.username != undefined & userInfo.lastName != undefined) {
     try {
       const response = await fetch('http://localhost:5000/api/auth/register', {
         method: 'POST',
@@ -138,15 +82,13 @@ formRegister.addEventListener("submit", async event => {
       });
 
       if (response.ok) {
-        alert('Registration successful!');
+        
         // Reset form
         userName.value = '';
         userLastName.value = '';
         userPass.value = '';
         userNumberPhone.value = '';
-        userReshte.value = 'entekhab';
-        userMaghta.value = 'entekhab';
-        userPaye.value = 'entekhab';
+        alert("OK")
       } else {
         const errorMessage = await response.text();
         alert(`Failed to register: ${errorMessage}`);

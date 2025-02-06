@@ -5,7 +5,7 @@ const router = express.Router();
 
 // ثبت‌نام کاربر
 router.post('/register', async (req, res) => {
-  const { username, lastName, numberPhone, maghta, reshteh, paye, password } = req.body;
+  const { username, lastName, numberPhone, password } = req.body;
 
   try {
     const userExists = await User.findOne({ numberPhone });
@@ -19,9 +19,6 @@ router.post('/register', async (req, res) => {
       username,
       lastName,
       numberPhone,
-      maghta,
-      reshteh,
-      paye,
       password: hashedPassword
     });
 
@@ -51,9 +48,6 @@ router.post('/login', async (req, res) => {
         username: user.username, 
         numberPhone: user.numberPhone,
         lastName: user.lastName,
-        maghta: user.maghta,
-        reshteh: user.reshteh,
-        paye: user.paye
       } 
     });
   } catch (error) {

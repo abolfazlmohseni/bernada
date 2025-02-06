@@ -1,0 +1,193 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.conteyner {
+    max-width: 1280px;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.menu {
+    width: 17%;
+    background-color: #e1e8eb;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-topSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+    margin-top: auto;
+}
+
+.menu-topSection__item {
+    width: 100%;
+    height: 40px;
+}
+
+.menu-topSection__item a {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: normal;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+}
+
+.menu-topSection__item a p {
+    margin: 0;
+    margin-right: 15px;
+}
+
+.bi {
+    font-size: 25px;
+}
+
+.menu-bottomSection {
+    margin-top: 2rem;
+}
+
+.main {
+    width: 83%;
+    margin-top: 1.5rem;
+}
+
+.header {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    background-color: #e1e8eb;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px #00000025;
+    display: flex;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile {
+    height: 64px;
+    width: 64px;
+    margin-right: 25px;
+}
+
+.profile img {
+    border-radius: 50px;
+}
+
+
+
+.header-rightSide {
+    display: flex;
+    margin-left: 25px;
+    align-items: center;
+}
+
+
+.notification {
+    margin-right: 10px;
+}
+
+.icon-link {
+    color: #333;
+}
+
+
+
+
+
+
+
+select {
+    border: none;
+    outline: none;
+    appearance: none;
+    font-size: 19px;
+    color: #707070;
+    width: 80%;
+    height: 40px;
+    border-radius: 13px;
+    padding: 5px;
+}
+
+.input {
+    box-shadow: 1px 1px 4px 2px #00000020;
+}
+
+.sectionOne {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+input[type="submit"] {
+    
+}
+
+.planerForm {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: space-around;
+    height: 330px;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 1200px) {
+    .conteyner {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    .conteyner {
+        width: 820px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .conteyner {
+        width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+@media only screen and (max-width: 576px) {
+    .conteyner {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
