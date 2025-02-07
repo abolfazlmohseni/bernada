@@ -2,7 +2,8 @@ let $ = document;
 const userReshte = $.querySelector(".userReshte");
 const userMaghta = $.querySelector(".userMaghta");
 const userPaye = $.querySelector(".userPaye");
-const reshteh = $.querySelector("#reshteh")
+const reshteh = $.querySelector("#reshteh");
+const planerForm = $.querySelector(".planerForm");
 
 // پایه ها
 // پایه ها
@@ -76,5 +77,8 @@ userMaghta.addEventListener('change', function () {
 });
 
 
-
+planerForm.addEventListener("submit",(event)=>{
+    event.preventDefault()
+    
+})
 
