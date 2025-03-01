@@ -189,23 +189,3 @@ planerForm.addEventListener("submit", async function (event) {
     console.log(scheduleInfo)
 })
 
-
-// const response = await fetch('http://localhost:5000/api/schedule', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(scheduleInfo),
-// });
-
-// if (response.ok) {
-//     const result = await response.json();
-//     console.log('Schedule created successfully:', result.schedule);
-//     console.log('User Info:', result.user);  // نمایش اطلاعات کاربر
-//     alert('Schedule created successfully!');
-// } else {
-//     const errorMessage = await response.text();
-//     alert(`Failed to create schedule: ${errorMessage}`);
-// }
-// console.log(    localStorage.getItem('user'))
-//    test= 
