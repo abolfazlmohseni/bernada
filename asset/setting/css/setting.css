@@ -1,34 +1,244 @@
 @font-face {
-    font-family: 'iransans';
-
-    src: url(../../fonts/IRANSansWeb_Medium.woff2)format('woff2');
+    font-family: 'yekanBakh';
+    src: url(../../fonts/YekanBakh-Regular.woff2)format(woff2);
 }
 
-@font-face {
-    font-family: 'vazir';
-
-    src: url(../../fonts/Vazir-Thin.woff2)format('woff2');
+:root {
+    /*  */
+    --themeblue: #0084db;
+    --themeAqua: #0074ba;
+    --themePurple: #763ebd;
+    --themeGreen: #0a7ea4;
+    --themeCyan: #01c0c8;
+    --themeOrange: #fa896b;
+    --themeDarkBlue: #0085db;
+    --dark-box-color: #111c2d;
+    --bg-themeblue: rgb(240, 245, 249);
+    --bg-themeAqua: #e0eef7 !important;
+    --bg-themePurple: #763ebd25;
+    --bg-themeGreen: #0a7ea425;
+    --bg-themeCyan: #01c0c825;
+    --bg-themeOrange: #fa896b25;
+    --bg-themeDarkBlue: #0085db25;
+    --white-color: #fff;
 }
 
-@font-face {
-    font-family: 'yekan';
-
-    src: url(../../fonts/Yekan.woff2)format('woff2');
-}
-
-@font-face {
-    font-family: 'yakanBakh';
-
-    src: url(../../fonts/YekanBakh-Regular.woff2)format('woff2');
+:root {
+    --background-color: #f0f5f9;
+    --text-color: #000000;
+    --box-bg: #ffffff;
+    --box-shadow-color: 00000025;
+    --theme-primary: #0084db;
+    --secondary-color: #0085db1f;
+    --color-number: rgb(112, 122, 130)
 }
 
 * {
-    font-family: 'yakanBakh';
+
+    font-family: 'yekanBakh';
+}
+
+body {
     direction: rtl;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.conteyner {
+    width: 100%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+main {
+    width: 83%;
+    transition: width 0.3s;
 }
 
 
 
+.btnThemeSetting {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    position: fixed;
+    left: 1.5%;
+    bottom: 3%;
+    z-index: 10;
+}
+
+.btnThemeSetting svg {
+    animation-name: settingIcon;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes settingIcon {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* setting */
+.popup-conteyner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s linear;
+    z-index: 10;
+}
+
+.popUp-themeSetting {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    box-shadow: 2px 2px 8px #00000035;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.box-Right {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.popUp-themeSetting__header {
+    margin-top: 1rem;
+    border-bottom: 1px solid #00000025;
+}
+
+.popUp-themeSetting__header p {
+    margin-right: 1rem;
+}
+
+.themeSetting__light-header,
+.themeSetting__dark-header {
+    margin-right: 1.2rem;
+    font-weight: 600;
+}
+
+.themeSetting__dark-item,
+.themeSetting__light-item {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.light-item__theme,
+.dark-item__theme {
+    width: 70px;
+    height: 60px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px #00000020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-item__rowOne,
+.dark-item__rowTwo,
+.light-item__rowOne,
+.light-item__rowTwo {
+    display: flex;
+    margin-bottom: 1rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.item__theme-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: #000;
+}
+
+.themebluebtn,
+.themeDarkBluebtn {
+    background-color: var(--themeblue);
+}
+
+.themeAquabtn,
+.themeDarkAquabtn {
+    background-color: var(--themeAqua);
+}
+
+.themePurplebtn,
+.themeDarkPurplebtn {
+    background-color: var(--themePurple);
+}
+
+.themeGreenbtn,
+.themeDarkGreenbtn {
+    background-color: var(--themeGreen);
+}
+
+.themeCyanbtn,
+.themeDarkCyanbtn {
+    background-color: var(--themeCyan);
+}
+
+.themeOrangebtn,
+.themDarkeOrangebtn {
+    background-color: var(--themeOrange);
+}
+
+.icon-tabler {
+    color: #fff;
+    position: absolute;
+}
+
+/* setting end*/
+
+/* themes */
+body {
+    background-color: var(--background-color);
+}
+
+menu,
+header,
+.popUp-themeSetting {
+    background-color: var(--box-bg);
+    color: var(--text-color);
+    box-shadow: 1px 1px 4px var(--box-shadow-color);
+}
+
+.btnThemeSetting {
+    background-color: var(--theme-primary);
+}
+
+.bi:hover,.theme-color__berand  {
+    color: var(--theme-primary);
+}
+
+.menu-item:hover {
+    background-color: var(--secondary-color);
+}
+
+/* */
+/*  */
 h1 {
     font-size: 2em;
     margin: 0.67em 0;
