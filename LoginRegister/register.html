@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/LoginRegister/css/regester-style.css">
+    <link rel="stylesheet" href="/setting/css/setting.css">
+    <title>برنادا</title>
+</head>
+
+<body>
+    <div class="success">
+        <div class="success-icon"></div>
+    </div>
+    <div class="conteyner">
+        <div class="regesterForm">
+            <div class="regesterForm-titel">
+                <p>ثبت نام در برنادا</p>
+            </div>
+            <div class="regesterForm-form">
+                <form>
+                    <input type="text" placeholder="نام" class="userName input" />
+                    <p class="errtext errtextName">مقدار نامعتبر</p>
+                    <input type="text" placeholder="نام خانوادگی" class="userLastName input" />
+                    <p class="errtext errtextLastname">مقدار نامعتبر</p>
+                    <input type="number" placeholder="شماره همراه" class="userNumberPhone input" />
+                    <p class="errtextNumberPhone errtext">شماره نامعتبر است</p>
+                    <input type="password" placeholder="گذرواژه" class="userPass input" />
+                    <p class="errtextPassword errtext">گذواژه باید بیشتر از 8 کاراکتر و شامل اعداد و حروف باشد</p>
+                   
+                    <div class="loginbox">
+                        <p>حساب دارید؟</p><a href="/login">وارد شوید</a>
+                    </div>
+                    <input type="submit" value="ثبت نام">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/LoginRegister/js/regester.js"></script>
+</body>
+
+</html>

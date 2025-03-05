@@ -1,7 +1,7 @@
 {
     "name": "Curriculum Planner",
     "short_name": "Planner",
-    "start_url": "/home/index.html",
+    "start_url": "/Login&register/register.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#6200ee",

@@ -73,7 +73,7 @@ formRegister.addEventListener("submit", async event => {
 
   if (userInfo.numberPhone != undefined & userInfo.password != undefined & userInfo.username != undefined & userInfo.lastName != undefined) {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch('https://itabolfazlmohseni.ir/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

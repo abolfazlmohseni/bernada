@@ -164,7 +164,7 @@ planerForm.addEventListener("submit", async function (event) {
         schedule: barnameuser
     };
     try {
-        const response = await fetch('http://localhost:5000/api/schedule', {
+        const response = await fetch('https://itabolfazlmohseni.ir/api/schedule', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
