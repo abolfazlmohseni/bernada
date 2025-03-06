@@ -20,17 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const data = await response.json();
-        alert(`Welcome, ${data.user.username}!`);
-        localStorage.setItem('user', JSON.stringify(data.user)); // ذخیره در لوکال استوریج
+       await swal("موفق آمیز", "ورود با موفعیت انجام شد", "success", {
+          button: "باشه",
+        });
+        localStorage.setItem('user', JSON.stringify(data.user));
 
-        window.location.href = "https://itabolfazlmohseni.ir/overview"; // هدایت به داشبورد
+        window.location.href = "https://itabolfazlmohseni.ir/overview";
       } else {
-        const errorMessage = await response.text();
-        alert(`Failed to login: ${errorMessage}`);
+        swal("ناموفق", "رمز عبور یا شماره تلفن معتبر نیست لطفا دوباره تلاش کنید.", "error", {
+          button: "باشه",
+        });
       }
-    } catch (error) {
-      console.error('Error during login:', error);
-      alert('Failed to login!');
-    }
+    } catch { }
   });
 });

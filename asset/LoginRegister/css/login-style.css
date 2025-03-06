@@ -19,13 +19,11 @@ body {
 .login-form {
     width: 430px;
     height: 440px;
-    background-color: #e1e8eb;
+    background-color: var(--box-bg);
     border-radius: 8px;
     padding: 10px;
-    box-shadow: 2px 2px 8px 8px #00000025;
+    box-shadow: 2px 2px 8px 8px var(--box-shadow-color);
 }
-
-
 
 form {
     display: flex;
@@ -44,13 +42,16 @@ input[type="password"] {
     height: 40px;
     border-radius: 13px;
     padding: 5px;
+    border: 1px solid var(--box-shadow-color) !important;
+    background-color: var(--box-bg) !important;
+    color: var(--text-color) !important;
 }
 
 input[type="submit"] {
     width: 80%;
     height: 40px;
-    color: #fff;
-    background-color: #7952b3;
+    background-color: var(--theme-primary) !important;
+    color: var(--white-color) !important;
     border: none;
     border-radius: 15px;
 }
@@ -67,7 +68,7 @@ input[type="submit"] {
 
 a {
     text-decoration: none;
-    color: #7952b3;
+    color: var(--theme-primary);
     margin-right: 2px;
 }
 

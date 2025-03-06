@@ -201,3 +201,8 @@ boxRight.addEventListener("click", () => {
     popupConteyner.style.display = 'none'
 
 })
+
+let userinfo = JSON.parse(localStorage.getItem('user'))
+
+const showName = document.querySelector(".userName");
+showName.innerHTML = userinfo.username

@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="UzoYiDXkh9I2vIWBpw9H0J6eMrfJ_Z4L_GHR__tMTCo" />
     <link rel="stylesheet" href="/setting/css/setting.css">
+    <link rel="stylesheet" href="/Dashboard/Build-program/css/BuildProgram-style.css">
     <link rel="stylesheet" href="/Quick-access/menu/css/menu-style.css">
-    <link rel="stylesheet" href="/Dashboard/overviow/css/overviow-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>برنادا</title>
 </head>
 
-<body class="themeblue">
+<body>
     <div class="conteyner">
         <menu>
             <div class="menu-berand">
@@ -42,7 +41,9 @@
                 <div class="header-right">
                     <img src="/imag/user6.jpg" class="user-profile">
                     <div class="showuser">
-                    <p class="user-head">سلام<p class="userName"></p></p>
+                        <p class="user-head">سلام
+                        <p class="userName"></p>
+                        </p>
                     </div>
                 </div>
                 <div class="header-left">
@@ -51,27 +52,81 @@
                 </div>
             </header>
             <div class="main-conteyner">
-                <div class="main-conteyner__right">
-                    <div class="conteyner__right-header">
-                        <p>کار های امروز</p>
+                <div class="buildFrom">
+                    <div class="maghta">
+                        <div class="selectmaghta">
+                            <p class="value-maghta">مقطع تحصیلی</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="m7 10l5 5l5-5z"></path>
+                            </svg>
+                        </div>
+                        <div class="opshionCon">
+                            <div class="opshionCon-maghta" data-maghta="ebtedayi">
+                                <p>ابتدایی</p>
+                            </div>
+                            <div class="opshionCon-maghta" data-maghta="motevaseteOne">
+                                <p>متوسطه اول</p>
+                            </div>
+                            <div class="opshionCon-maghta" data-maghta="motevaseteTwo">
+                                <p>متوسطه دوم</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="conteyner__right-meddel">
-                  
+                    <!--  -->
+                    <div class="paye">
+                        <div class="selectpaye">
+                            <p class="value-paye">پایه تحصیلی</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="m7 10l5 5l5-5z"></path>
+                            </svg>
+                        </div>
+                        <div class="opshionCon-paye">
+
+                        </div>
                     </div>
-                </div>
-                <div class="main-conteyner__left">
-                    <div class="conteyner__left-header">
-                        <p>کار های عقب افتاده</p>
+                    <!--  -->
+                    <div class="teshte">
+                        <div class="selectTeshte">
+                            <p class="value-teshte">رشته تحصیلی</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="m7 10l5 5l5-5z"></path>
+                            </svg>
+                        </div>
+                        <div class="opshionCon-teshte">
+
+                        </div>
                     </div>
-                    <div class="conteyner__left-meddel">
-                   
+                    <!--  -->
+                    <div class="hour">
+                        <div class="selecthour">
+                            <p class="value-hour">ساعت</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="m7 10l5 5l5-5z"></path>
+                            </svg>
+                        </div>
+                        <div class="opshionCon-hour">
+                            <div class="opshionCon-hour-item" data-hour="two">
+                                <p>دو ساعت</p>
+                            </div>
+                            <div class="opshionCon-hour-item" data-hour="fuor">
+                                <p>چهار ساعت</p>
+                            </div>
+                            <div class="opshionCon-hour-item" data-hour="six">
+                                <p>شش ساعت</p>
+                            </div>
+                        </div>
                     </div>
+                    <button class="buildFrom-submit">ساخت برنامه</button>
                 </div>
             </div>
         </main>
         <div class="btnThemeSetting">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler icon-tabler-settings" width="24px" height="24px"
-                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                viewBox="0 0 24 24" stroke-width="2" class="icon" stroke="currentColor" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path
@@ -152,10 +207,9 @@
             <div class="box-Right"></div>
         </div>
     </div>
-
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script  type="module" src="/Dashboard/Build-program/js/BuildProgramJs.js"></script>
     <script src="/setting/js/setting.js"></script>
-    <script type="module" src="/Dashboard/overviow/js/overviow-script.js"></script>
 </body>
 
 </html>

@@ -88,19 +88,22 @@ formRegister.addEventListener("submit", async event => {
         userLastName.value = '';
         userPass.value = '';
         userNumberPhone.value = '';
-        alert("OK")
+        swal("موفق", "ثبت نام با موقعیت انجام شد ورود کیند.", "success", {
+          button: "باشه",
+        });
       } else {
-        const errorMessage = await response.text();
-        alert(`Failed to register: ${errorMessage}`);
+        swal("ناموفق", "ثبت نام با مشکل مواجه شد لطفا دوباره تلاش کنید.", "error", {
+          button: "باشه",
+        });
       }
     } catch (error) {
-      console.error('Error during registration:', error);
-      alert('Failed to register!');
+
     }
   }
 
 
 });
+
 
 
 

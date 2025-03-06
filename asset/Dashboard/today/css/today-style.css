@@ -1,0 +1,44 @@
+.main-conteyner {
+    width: 95%;
+    margin: 2rem auto;
+    background: var(--box-bg);
+    box-shadow: 1px 1px 6px var(--box-shadow-color);
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.main-conteyner__head {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.main-conteyner__meddel {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 8px;
+}
+tr {
+    height: 45px;
+    transition: background ease 0.2s;
+}
+tr:hover{
+    color: var(--white-color);
+    background: var(--theme-primary);
+}
+thead tr,tbody tr:not(:last-child) {
+    border-bottom: 1px solid var(--box-shadow-color);
+
+}
+.bikari{
+    font-size: 20px;
+    text-align: center;
+    display: none;
+    margin-top: 5rem;
+}
