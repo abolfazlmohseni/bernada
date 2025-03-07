@@ -2,9 +2,7 @@
     font-family: 'yekanBakh';
     src: url(../../fonts/YekanBakh-Regular.woff2)format(woff2);
 }
-
 :root {
-    /*  */
     --themeblue: #0084db;
     --themeAqua: #0074ba;
     --themePurple: #763ebd;
@@ -27,7 +25,7 @@
     --background-color: #f0f5f9;
     --text-color: #000000;
     --box-bg: #ffffff;
-    --box-shadow-color: 00000025;
+    --box-shadow-color: #00000025;
     --theme-primary: #0084db;
     --secondary-color: #0085db1f;
     --color-number: rgb(112, 122, 130)
@@ -44,6 +42,7 @@ body {
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
+    overflow: hidden !important;
 }
 
 .conteyner {
@@ -58,8 +57,6 @@ main {
     width: 83%;
     transition: width 0.3s;
 }
-
-
 
 .btnThemeSetting {
     width: 48px;
@@ -116,7 +113,8 @@ main {
 }
 
 .box-Right {
-    position: absolute;
+    position: fixed;
+    top: 0;
     width: 80%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
@@ -229,7 +227,8 @@ header,
     background-color: var(--theme-primary);
 }
 
-.bi:hover,.theme-color__berand  {
+.bi:hover,
+.theme-color__berand {
     color: var(--theme-primary);
 }
 
@@ -354,7 +353,7 @@ legend {
     display: table;
     max-width: 100%;
     padding: 0;
-    /* 3 */
+
     white-space: normal;
 }
 
@@ -407,8 +406,6 @@ template {
     display: none;
 }
 
-/* Start Project */
-
 html {
     box-sizing: border-box;
 }
@@ -417,4 +414,22 @@ html {
 *:before,
 *:after {
     box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--box-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-primary);
+
 }

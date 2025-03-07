@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   numberPhone: {
     type: String,
     required: true,
-    unique: true,  // شماره تلفن باید یکتا باشد
+    unique: true,  
   },
   password: {
     type: String,

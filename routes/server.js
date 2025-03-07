@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '..', 'asset')));
 app.use(express.static(path.join(__dirname, '..', 'asset')));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'LoginRegister', 'login.html'));
+    res.sendFile(path.join(__dirname, '..', 'landing', 'landing.html'));
 });
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'LoginRegister', 'login.html'));
@@ -41,15 +41,13 @@ app.get('/today', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'Dashboard', 'today','today.html'))
 })
 app.get('/delay', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'Dashboard', 'delay.html'))
+    res.sendFile(path.join(__dirname, '..', 'Dashboard','delay', 'delay.html'))
 })
 app.get('/buildprogram', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'Dashboard', 'buildprogram', 'buildprogram.html'))
 })
-app.get('/today', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'Dashboard', 'profile.html'))
-})
-const mongoURI = process.env.DATABASE_URL || "mongodb://root:0c15ZMdwTKWV08Ddkmd6N6hf@k2.liara.cloud:32939/my-app?authSource=admin";
+
+const mongoURI = process.env.DATABASE_URL || "mongodb://root:0c15ZMdwTKWV08Ddkmd6N6hf@planer-detabise:27017/my-app?authSource=admin";
 mongoose.connect(mongoURI)
     .then(() => console.log(' Connected to MongoDB'))
     .catch((error) => console.error(' MongoDB connection error:', error));

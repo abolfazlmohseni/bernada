@@ -1,9 +1,7 @@
 .main-conteyner {
     width: 95%;
     margin: 2rem auto;
-    /* background-color: var(--box-bg); */
     border-radius: 8px;
-    /* box-shadow: 1px 1px 4px var(--box-shadow-color),-1px -1px 4px var(--box-shadow-color); */
     display: flex;
     justify-content: space-around;
 }
@@ -15,6 +13,7 @@
     border-radius: 8px;
     height: 400px;
     box-shadow: 1px 1px 6px var(--box-shadow-color), -1px -1px 6px var(--box-shadow-color);
+    overflow-y: auto;
 }
 
 .conteyner__right-header,

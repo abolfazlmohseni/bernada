@@ -73,7 +73,7 @@ formRegister.addEventListener("submit", async event => {
 
   if (userInfo.numberPhone != undefined & userInfo.password != undefined & userInfo.username != undefined & userInfo.lastName != undefined) {
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch('https://itabolfazlmohseni.ir/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,9 +81,7 @@ formRegister.addEventListener("submit", async event => {
         body: JSON.stringify(userInfo),
       });
 
-      if (response.ok) {
-        
-        // Reset form
+      if (response.ok) {        
         userName.value = '';
         userLastName.value = '';
         userPass.value = '';

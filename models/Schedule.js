@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-  _id: { type: mongoose.Schema.Types.ObjectId, auto: true }, // 👈 اضافه شدن ID خودکار
+  _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
   day: { type: String, required: true },
   startTime: { type: String, required: true },
   endTime: { type: String, required: true },
