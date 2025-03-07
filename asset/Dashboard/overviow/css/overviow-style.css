@@ -68,4 +68,34 @@
 .right-meddel__items .bi,
 .left-meddel__items .bi {
     height: 18px;
+
+}
+
+@media only screen and (max-width:768px) {
+    body {
+        overflow-y: auto !important;
+    }
+
+    menu {
+        height: 935px;
+    }
+
+    .main-conteyner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-conteyner__left,
+    .main-conteyner__right {
+        width: 85%;
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+
+    .main-conteyner__left,
+    .main-conteyner__right {
+        width: 100%;
+    }
 }

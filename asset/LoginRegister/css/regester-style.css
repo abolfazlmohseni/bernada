@@ -110,3 +110,9 @@ select {
         width: 90%;
     }
 }
+
+@media only screen and (max-width: 375px) {
+    .regesterForm {
+        width: 305px;
+    }
+}

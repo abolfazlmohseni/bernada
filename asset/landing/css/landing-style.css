@@ -160,28 +160,33 @@ footer {
     font-weight: 600;
     margin-top: 1rem;
 }
-.footer-berand p{
+
+.footer-berand p {
     margin: 0;
 }
+
 .berand {}
 
 .berand-color {}
-.orgFooter-rowTwo{
+
+.orgFooter-rowTwo {
     display: flex;
     justify-content: center;
 
 }
-.orgFooter-rowTwo p{
+
+.orgFooter-rowTwo p {
     width: 25%;
     margin: 5px 0;
     line-height: 1.40;
 }
 
-.orgFooter-rowTree p{
+.orgFooter-rowTree p {
     margin: 0;
     font-weight: 600;
     margin-bottom: 0.8rem;
 }
+
 .orgFooter-rowTree a {
     color: var(--white-color);
     background: var(--theme-primary);
@@ -189,6 +194,7 @@ footer {
     padding: 5px 8px;
     border-radius: 8px;
 }
+
 .btFooter {
     width: 100%;
     text-align: center;
@@ -196,8 +202,6 @@ footer {
     margin: 0;
     color: #aaa;
 }
-
-
 
 ::-webkit-scrollbar {
     width: 8px !important;
@@ -215,4 +219,83 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color) !important;
 
+}
+
+
+@media only screen and (max-width:1024px) {
+
+    .sectionTwo-left__capshion,
+    .sectionTree-left__capshion,
+    .sectionFuor-left__capshion,
+    .sectionFive-left__capshion {
+        width: 80%;
+    }
+
+    .orgFooter-rowTwo p {
+        width: 40%;
+    }
+
+    .One {
+        width: 21%;
+    }
+
+    .Two {
+        width: 41%;
+    }
+
+    .Tree {
+        width: 29%;
+    }
+
+    .Five {
+        width: 46%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+
+    .sectionTwo-right,
+    .sectionTree-right,
+    .sectionFuor-right,
+    .sectionFive-right {
+        display: none;
+    }
+
+
+    .sectionTwo-left,
+    .sectionTree-left,
+    .sectionFuor-left,
+    .sectionFive-left {
+        width: 100%;
+        text-align: center !important;
+    }
+
+    .line-bottom {
+        width: 80% !important;
+        margin: 0 auto;
+    }
+
+    .sectionTwo-left__capshion,
+    .sectionTree-left__capshion,
+    .sectionFuor-left__capshion,
+    .sectionFive-left__capshion {
+        width: 100%;
+        text-align: center;
+    }
+
+    .orgFooter-rowTwo p {
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .orgFooter-rowTwo p {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width:320px) {
+    footer {
+        height: 341px;
+    }
 }

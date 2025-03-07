@@ -2,6 +2,7 @@
     font-family: 'yekanBakh';
     src: url(../../fonts/YekanBakh-Regular.woff2)format(woff2);
 }
+
 :root {
     --themeblue: #0084db;
     --themeAqua: #0074ba;
@@ -123,6 +124,16 @@ main {
 .popUp-themeSetting__header {
     margin-top: 1rem;
     border-bottom: 1px solid #00000025;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bi-x {
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    height: 22px;
 }
 
 .popUp-themeSetting__header p {
@@ -432,4 +443,34 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--theme-primary);
 
+}
+
+@media only screen and (max-width:1024px) {
+    .popUp-themeSetting {
+        width: 33%;
+    }
+
+    .box-Right {
+        width: 67%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .popUp-themeSetting {
+        width: 42%;
+    }
+
+    .box-Right {
+        width: 58%;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .popUp-themeSetting {
+        width: 100%;
+    }
+
+    .box-Right {
+        width: 0%;
+    }
 }

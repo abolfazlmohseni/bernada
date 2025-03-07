@@ -16,12 +16,19 @@ menu {
     transition: width 0.3s linear, right 0.3s ease;
 }
 
+.topmenu {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.openmenu {
+    display: none;
+}
+
 .menu-berand {
     display: flex;
-    margin-bottom: 2rem;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
     font-size: 26px;
 }
 
@@ -42,6 +49,7 @@ menu {
 
 .userName {
     font-size: 16px;
+    font-weight: 600;
     margin: 0;
     margin-right: 3px;
 }
@@ -101,4 +109,63 @@ header {
 .bi {
     margin-left: 10px;
     transition: 0.2s;
+}
+
+.bi-x {
+    display: none;
+}
+
+@media only screen and (max-width:1024px) {
+    menu {
+        width: 23%;
+    }
+
+    main {
+        width: 77%;
+    }
+
+
+}
+
+@media only screen and (max-width:768px) {
+    menu {
+        width: 30%;
+    }
+
+    main {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    menu {
+        position: absolute;
+        right: -100%;
+        margin: 0;
+        border-top-right-radius: 0;
+        width: 55%;
+        z-index: 10;
+    }
+
+    .bi-x {
+        display: block;
+    }
+
+    .topmenu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .openmenu {
+        display: block;
+    }
+
+    main {
+        width: 95%;
+    }
+
+    .buildFrom {
+        width: 95%;
+    }
 }

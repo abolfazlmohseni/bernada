@@ -82,3 +82,9 @@ a {
         width: 90%;
     }
 }
+
+@media only screen and (max-width: 375px) {
+    .login-form {
+        width: 305px;
+    }
+}
