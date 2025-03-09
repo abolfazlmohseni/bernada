@@ -96,11 +96,14 @@ header {
     text-align: justify;
     font-size: 18px;
 }
-
+.sectionTwo-right,
 .sectionTree-right,
 .sectionFuor-right,
 .sectionFive-right {
     width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sectionTree-left,
@@ -169,6 +172,33 @@ footer {
 
 .berand-color {}
 
+img {
+    width: 200px;
+}
+
+.boardIMG {
+    width: 250px;
+    margin-left: 50%;
+}
+
+.books {
+    margin-left: 40%;
+}
+
+.clock {
+    margin-left: 50%;
+}
+
+.logo {
+    margin-left: 50%;
+    display: flex;
+    font-size:72px;
+    font-weight: 600;
+}
+.logo-color{
+    color: var(--theme-primary);
+    margin-right: -5px;
+}
 .orgFooter-rowTwo {
     display: flex;
     justify-content: center;
@@ -254,11 +284,29 @@ footer {
 
 @media only screen and (max-width:768px) {
 
+    .sectionTwo,
+    .sectionTree,
+    .sectionFuor,
+    .sectionFive {
+        flex-direction: column;
+    }
+    .sectionTree,.sectionFuor{
+        flex-direction: column-reverse;
+    }
+    .logo,
+    .boardIMG,
+    .books,
+    .clock {
+        margin: 0;
+        margin-top: 1rem;
+    }
+
     .sectionTwo-right,
     .sectionTree-right,
     .sectionFuor-right,
     .sectionFive-right {
-        display: none;
+        width: 100%;
+
     }
 
 
