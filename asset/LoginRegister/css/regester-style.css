@@ -33,9 +33,9 @@ form {
     align-items: center;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="number"] {
+
+.password-container,
+.input {
     border: none;
     outline: none;
     font-size: 18px;
@@ -46,6 +46,23 @@ input[type="number"] {
     border: 1px solid var(--box-shadow-color) !important;
     background-color: var(--box-bg) !important;
     color: var(--text-color) !important;
+}
+
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#togglePassword {
+    margin-left: 5px;
+    width: 6%;
+}
+
+.userPass {
+    border: none;
+    outline: none;
+    width: 94%;
 }
 
 input[type="submit"] {
@@ -98,15 +115,21 @@ select {
     display: block !important;
 }
 
+.mixP,
+.charP {
+    display: none;
+    margin: 1px;
+    text-align: start;
+    width: 79%;
+}
+
 @media only screen and (max-width: 425px) {
     .regesterForm {
         width: 400px;
     }
 
-    input[type=text],
-    input[type="number"],
-    input[type="password"],
-    select {
+    .input,
+    .password-container {
         width: 90%;
     }
 }

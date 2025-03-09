@@ -1,14 +1,18 @@
 const phoneNumber = JSON.parse(localStorage.getItem('user')).numberPhone;
-let scheduleData = { schedule: { schedule: [] } };
+const conteyner__right = document.querySelector(".conteyner__right-meddel");
+let scheduleData = { schedule: [] };
+
 const getUserSchedule = async (userphon) => {
     try {
-        const response = await fetch(`https://itabolfazlmohseni.ir/api/schedule/${userphon}`);
+        const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
         if (!response.ok) {
             throw new Error("Error fetching schedule");
         }
         const data = await response.json();
-        scheduleData = data.schedule;
-        showIncompleteScheduleForDay(getDayOfWeek());
+
+        scheduleData = Array.isArray(data.schedule) ? { schedule: data.schedule } : { schedule: [] };
+
+        showIncompleteScheduleForDay(getDayOfWeeks());
     } catch (error) {
         console.error("Error:", error);
     }
@@ -16,53 +20,62 @@ const getUserSchedule = async (userphon) => {
 
 getUserSchedule(phoneNumber);
 
-const conteyner__right = document.querySelector(".conteyner__right-meddel");
 const getIncompleteScheduleForDay = (day) => {
-    return scheduleData.schedule.filter(entry => entry.day === day && entry.completed === false); 
+    return Array.isArray(scheduleData.schedule)
+        ? scheduleData.schedule.filter(entry => entry.day === day && !entry.completed)
+        : [];
 };
 
 const showIncompleteScheduleForDay = (day) => {
     const workDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه"];
+    conteyner__right.innerHTML = "";
+
     if (workDays.includes(day)) {
-        const activities = getIncompleteScheduleForDay(day); 
-        activities.forEach(activity => {
-            if (activity != null) {
-                conteyner__right.insertAdjacentHTML("beforeend", `
-                  <div class="right-meddel__items" data-id="${activity._id}">
+        const activities = getIncompleteScheduleForDay(day);
+
+        if (activities.length > 0) {
+            activities.forEach(activity => {
+                const existingItem = conteyner__right.querySelector(`[data-id="${activity._id}"]`);
+                if (!existingItem) {
+                    conteyner__right.insertAdjacentHTML("beforeend", `
+                        <div class="right-meddel__items" data-id="${activity._id}">
                             <p class="kar">${activity.activity}</p>
                             <i class="bi bi-square"></i>
                         </div>
-                `);
-            }
-        });
-    } else {
-        conteyner__right.insertAdjacentHTML("beforeend", `<p>کاری نیستش!!</p>`)
+                    `);
+                }
+            });
+        } else {
+            conteyner__right.insertAdjacentHTML("beforeend", `<p>کاری نیستش!!</p>`);
+        }
     }
-    const allitem = document.querySelectorAll(".right-meddel__items")
-    allitem.forEach(item => {
+
+
+    document.querySelectorAll(".right-meddel__items").forEach(item => {
         item.addEventListener("click", () => {
-            const taskId = item.getAttribute("data-id")
-            task(taskId)
-            var icon = item.querySelector(".bi")
-            icon.classList = "bi bi-check-square"
-        })
-    })
+            const taskId = item.getAttribute("data-id");
+            task(taskId);
+            item.querySelector(".bi").classList = "bi bi-check-square";
+        });
+    });
 };
 
-const getDayOfWeek = () => {
+
+const getDayOfWeeks = () => {
     const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
     const today = new Date();
     const dayIndex = today.getDay();
     return daysOfWeek[dayIndex];
 };
+
 function task(id) {
 
-    fetch(`https://itabolfazlmohseni.ir/task/update-status/${phoneNumber}/${id}`, {
+    fetch(`https://bernada.ir/task/update-status/${phoneNumber}/${id}`, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json',  
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ completed: true }) 
+        body: JSON.stringify({ completed: true })
     })
         .then(response => response.json())
         .then(data => {
@@ -72,20 +85,22 @@ function task(id) {
             console.error("خطا در ارسال درخواست:", error);
         });
 }
-// دریافت کار های عقب افتاده
-
-let scheduleDatas = { schedule: { schedule: [] } };
+let scheduleDatas = { schedule: [] };
 
 const getUserSchedulee = async (userphon) => {
     try {
-        const response = await fetch(`https://itabolfazlmohseni.ir/api/schedule/${userphon}`);
+        const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
         if (!response.ok) {
             throw new Error("Error fetching schedule");
         }
         const data = await response.json();
-        scheduleDatas = data.schedule;
-        showIncompleteSchedulesBeforeToday(getDayOfWeek());  
-        showIncompleteScheduleForDayi(getDayOfWeeks()); 
+        if (data.schedule) {
+            scheduleDatas = data.schedule;
+            showIncompleteSchedulesBeforeToday(getDayOfWeek());
+
+        } else {
+            console.error("No schedule found for the user");
+        }
     } catch (error) {
         console.error("Error:", error);
     }
@@ -96,14 +111,23 @@ getUserSchedulee(phoneNumber);
 const conteyner__left = document.querySelector(".conteyner__left-meddel");
 
 const getIncompleteSchedulesBeforeToday = (todayDay) => {
+    if (!scheduleDatas || !scheduleDatas.length) {
+        console.error("scheduleDatas is empty or undefined");
+        return [];
+    }
+
     const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
     const todayIndex = daysOfWeek.indexOf(todayDay);
     const previousDays = daysOfWeek.slice(0, todayIndex);
-    return scheduleDatas.schedule.filter(entry => previousDays.includes(entry.day) && entry.completed === false); 
+
+    return scheduleDatas.filter(entry => previousDays.includes(entry.day) && entry.completed === false);
 };
 
+
 const showIncompleteSchedulesBeforeToday = (day) => {
-    const previousSchedules = getIncompleteSchedulesBeforeToday(day);  
+    const previousSchedules = getIncompleteSchedulesBeforeToday(day);
+    conteyner__left.innerHTML = "";
+
     if (previousSchedules.length > 0) {
         previousSchedules.forEach(activity => {
             conteyner__left.insertAdjacentHTML("beforeend", `
@@ -119,38 +143,41 @@ const showIncompleteSchedulesBeforeToday = (day) => {
 };
 
 const getIncompleteScheduleForDayi = (day) => {
-    return scheduleData.schedule.filter(entry => entry.day === day && entry.completed === false);  
+    return scheduleDatas.filter(entry => entry.day === day && entry.completed === false);
 };
 
 const showIncompleteScheduleForDayi = (day) => {
     const workDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه"];
+    conteyner__right.innerHTML = "";
+
     if (workDays.includes(day)) {
-        const activities = getIncompleteScheduleForDayi(day);  
-        activities.forEach(activity => {
-            if (activity != null) {
+        const activities = getIncompleteScheduleForDayi(day);
+        if (activities.length > 0) {
+            activities.forEach(activity => {
                 conteyner__right.insertAdjacentHTML("beforeend", `
                     <div class="right-meddel__items" data-id="${activity._id}">
                         <p class="kar">${activity.activity}</p>
                         <i class="bi bi-square"></i>
                     </div>
                 `);
-            }
-        });
-    } else {
-        conteyner__left.insertAdjacentHTML("beforeend", `<p>کاری نیستش!!</p>`);
+            });
+        } else {
+            conteyner__right.insertAdjacentHTML("beforeend", `<p>هیچ برنامه‌ای برای امروز وجود ندارد.</p>`);
+        }
     }
-    const allitem = document.querySelectorAll(".left-meddel__items");
-    allitem.forEach(item => {
+
+    document.querySelectorAll(".right-meddel__items").forEach(item => {
         item.addEventListener("click", () => {
             const taskId = item.getAttribute("data-id");
             task(taskId);
-            var icon = item.querySelector(".bi")
-            icon.classList = "bi bi-check-square"
+            var icon = item.querySelector(".bi");
+            icon.classList = "bi bi-check-square";
         });
     });
 };
 
-const getDayOfWeeks = () => {
+
+const getDayOfWeek = () => {
     const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
     const today = new Date();
     const dayIndex = today.getDay();

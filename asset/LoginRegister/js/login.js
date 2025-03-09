@@ -3,6 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const userNumberPhone = document.querySelector('.userNumberPhone');
   const userPass = document.querySelector('.userPass');
 
+  const togglePassword = document.querySelector('#togglePassword');
+
+
+  togglePassword.addEventListener('click', function (e) {
+    const type = userPass.getAttribute('type') === 'password' ? 'text' : 'password';
+    userPass.setAttribute('type', type);
+
+    this.classList.toggle('bi-eye');
+    this.classList.toggle('bi-eye-slash');
+  });
+
+
   formLogin.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -12,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch('https://itabolfazlmohseni.ir/api/auth/login', {
+      const response = await fetch('https://bernada.ir/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
@@ -20,12 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const data = await response.json();
-       await swal("موفق آمیز", "ورود با موفعیت انجام شد", "success", {
+        await swal("موفق آمیز", "ورود با موفعیت انجام شد", "success", {
           button: "باشه",
         });
         localStorage.setItem('user', JSON.stringify(data.user));
 
-        window.location.href = "https://itabolfazlmohseni.ir/overview";
+        window.location.href = "https://bernada.ir/overview";
       } else {
         swal("ناموفق", "رمز عبور یا شماره تلفن معتبر نیست لطفا دوباره تلاش کنید.", "error", {
           button: "باشه",

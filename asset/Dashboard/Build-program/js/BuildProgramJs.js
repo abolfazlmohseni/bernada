@@ -34,7 +34,7 @@ dropdowns.forEach(dropdown => {
     if (options) {
         options.forEach(option => {
             option.addEventListener("click", function () {
-                const category = dropdown.classList[0]; // مثلا "maghta", "paye", "hour"
+                const category = dropdown.classList[0];
                 valueBox.innerHTML = this.innerHTML;
                 selectedValues[category] = this.dataset[category];
                 optionsContainer.classList.remove("show", "anime");
@@ -77,7 +77,7 @@ function updatePayeOptions(maghta) {
         item.addEventListener("click", function () {
             valuePaye.innerHTML = this.innerHTML;
             selectedValues.paye = this.dataset.paye;
-            opshionConPaye.classList.remove("show", "anime"); 
+            opshionConPaye.classList.remove("show", "anime");
             updateTeshteOptions(selectedValues.maghta);
         });
     });
@@ -99,7 +99,7 @@ function updateTeshteOptions(maghta) {
         item.addEventListener("click", function () {
             valueTeshte.innerHTML = this.innerHTML;
             selectedValues.teshte = this.dataset.teshte;
-            opshionConTeshte.classList.remove("show", "anime");   
+            opshionConTeshte.classList.remove("show", "anime");
         });
     });
 }
@@ -115,10 +115,10 @@ document.querySelectorAll(".opshionCon-hour > div").forEach(item => {
 const buildFromSubmit = document.querySelector('.buildFrom-submit');
 buildFromSubmit.addEventListener('click', async function () {
     let userInfo = {
-        userMaghta: selectedValues.maghta,  
-        userPaye: selectedValues.paye,     
-        userReshte: selectedValues.teshte,  
-        userTime: selectedValues.hour       
+        userMaghta: selectedValues.maghta,
+        userPaye: selectedValues.paye,
+        userReshte: selectedValues.teshte,
+        userTime: selectedValues.hour
     };
     let barnameuser = null;
     if (selectedValues.maghta === 'ebtedayi') {
@@ -180,7 +180,7 @@ buildFromSubmit.addEventListener('click', async function () {
         schedule: barnameuser
     };
     try {
-        const response = await fetch('https://itabolfazlmohseni.ir/api/schedule', {
+        const response = await fetch('https://bernada.ir/api/schedule', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -189,19 +189,20 @@ buildFromSubmit.addEventListener('click', async function () {
         });
         if (response.ok) {
             const result = await response.json();
-            swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته شد`, "success", {
+            await swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته شد`, "success", {
                 button: "باشه",
-              });
+            });
+            window.location.href = "https://bernada.ir/overview";
         } else {
             const errorMessage = await response.text();
             swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
                 button: "باشه",
-              });
+            });
         }
     } catch (error) {
         swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
             button: "باشه",
-          });
+        });
     }
 });
 

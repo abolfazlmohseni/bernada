@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'yekanBakh';
-    src: url(../../fonts/YekanBakh-Regular.woff2)format(woff2);
+    font-family: 'iranS';
+    src: url(../../fonts/IRANSansWeb_Medium.woff2)format(woff2);
 }
 
 :root {
@@ -34,7 +34,7 @@
 
 * {
 
-    font-family: 'yekanBakh';
+    font-family: 'iranS';
 }
 
 body {
@@ -43,7 +43,7 @@ body {
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
-    overflow: hidden !important;
+    overflow-x: hidden !important;
 }
 
 .conteyner {

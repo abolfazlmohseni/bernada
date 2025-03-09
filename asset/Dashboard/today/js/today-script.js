@@ -1,48 +1,63 @@
-const phoneNumber = JSON.parse(localStorage.getItem('user')).numberPhone;
-let scheduleData = { schedule: { schedule: [] } };
+const phoneNumber = JSON.parse(localStorage.getItem('user'))?.numberPhone || "";
+let scheduleData = { schedule: [] };
+
 const getUserSchedule = async (userphon) => {
     try {
-        const response = await fetch(`https://itabolfazlmohseni.ir/api/schedule/${userphon}`);
+        const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
         if (!response.ok) {
             throw new Error("Error fetching schedule");
         }
         const data = await response.json();
-       
-        scheduleData = data.schedule; 
-        showIncompleteScheduleForDay(getDayOfWeek()); 
+
+        scheduleData = Array.isArray(data.schedule) ? { schedule: data.schedule } : { schedule: [] };
+
+        showIncompleteScheduleForDay(getDayOfWeek());
     } catch (error) {
         console.error("Error:", error);
     }
 };
 
-getUserSchedule(phoneNumber);
+if (phoneNumber) {
+    getUserSchedule(phoneNumber);
+} else {
+    console.error("شماره تلفن نامعتبر است.");
+}
 
 const opartorashon = document.querySelector(".opartorashon");
+const tabel = document.querySelector("table");
+const bikari = document.querySelector(".bikari");
 
 const getIncompleteScheduleForDay = (day) => {
-    return scheduleData.schedule.filter(entry => entry.day === day && entry.completed === false); 
+    return Array.isArray(scheduleData.schedule) 
+        ? scheduleData.schedule.filter(entry => entry.day === day && entry.completed === false)
+        : [];
 };
 
 const showIncompleteScheduleForDay = (day) => {
     const workDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه"];
+    opartorashon.innerHTML = "";
+
     if (workDays.includes(day)) {
-        const activities = getIncompleteScheduleForDay(day);  
-        activities.forEach(activity => {
-            if (activity != null) {
+        const activities = getIncompleteScheduleForDay(day);
+
+        if (activities.length > 0) {
+            tabel.style.display = "table";
+            bikari.style.display = "none";
+            activities.forEach(activity => {
                 opartorashon.insertAdjacentHTML("beforeend", `
                     <tr>
                         <td>${activity.day}</td>
                         <td>${activity.startTime}</td>
                         <td>${activity.endTime}</td>
                         <td>${activity.activity}</td>
-            
                     </tr>
                 `);
-            }
-        });
+            });
+        } else {
+            tabel.style.display = "none";
+            bikari.style.display = "block";
+        }
     } else {
-        const tabel = document.querySelector("table");
-        const bikari = document.querySelector(".bikari");
         tabel.style.display = "none";
         bikari.style.display = "block";
     }
@@ -51,6 +66,5 @@ const showIncompleteScheduleForDay = (day) => {
 const getDayOfWeek = () => {
     const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
     const today = new Date();
-    const dayIndex = today.getDay(); 
-    return daysOfWeek[dayIndex]; 
+    return daysOfWeek[today.getDay()];
 };

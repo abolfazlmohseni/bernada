@@ -28,9 +28,12 @@
                     <p class="errtext errtextLastname">مقدار نامعتبر</p>
                     <input type="number" placeholder="شماره همراه" class="userNumberPhone input" />
                     <p class="errtextNumberPhone errtext">شماره نامعتبر است</p>
-                    <input type="password" placeholder="گذرواژه" class="userPass input" />
-                    <p class="errtextPassword errtext">گذواژه باید بیشتر از 8 کاراکتر و شامل اعداد و حروف باشد</p>
-
+                    <div class="field password-container">
+                        <input type="password" placeholder="گذرواژه" class="userPass ">
+                        <i id="togglePassword" class="bi bi-eye"></i>
+                    </div>
+                    <p class="charP">شامل 8 کاراکتر</p>
+                    <p class="mixP">ترکیبی از حروف و عدد</p>
                     <div class="loginbox">
                         <p>حساب دارید؟</p><a href="/login">وارد شوید</a>
                     </div>
@@ -124,7 +127,7 @@
     </div>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="module" src="/LoginRegister/js/regester.js"></script>
-    <script src="/setting/js/setting.js"></script>
+    <script src="/setting/js/themeSet.js"></script>
 </body>
 
 </html>

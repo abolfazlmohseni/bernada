@@ -34,7 +34,7 @@ form {
 }
 
 input[type="number"],
-input[type="password"] {
+.password-container {
     border: none;
     outline: none;
     font-size: 18px;
@@ -45,6 +45,21 @@ input[type="password"] {
     border: 1px solid var(--box-shadow-color) !important;
     background-color: var(--box-bg) !important;
     color: var(--text-color) !important;
+}
+
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#togglePassword {
+    margin-left: 5px;
+}
+
+.userPass {
+    border: none;
+    outline: none;
 }
 
 input[type="submit"] {
