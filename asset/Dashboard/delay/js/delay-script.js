@@ -5,7 +5,7 @@ const getUserSchedule = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
         if (!response.ok) {
-            throw new Error("Error fetching schedule");
+            console.log("erorr")
         }
         const data = await response.json();
 

@@ -199,8 +199,9 @@ boxRight.addEventListener("click", () => {
     popUpThemeSetting.style.left = "-300px"
     popupConteyner.style.display = 'none'
 })
-const closeBTN = document.querySelector(".bi-x")
+const closeBTN = document.querySelector(".closepopUp")
 closeBTN.addEventListener("click", () => {
     popUpThemeSetting.style.left = "-300px"
     popupConteyner.style.display = 'none'
+    popupConteyner.classList.remove("Animation")
 })

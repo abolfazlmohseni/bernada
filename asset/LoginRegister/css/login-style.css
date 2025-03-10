@@ -55,11 +55,15 @@ input[type="number"],
 
 #togglePassword {
     margin-left: 5px;
+    width: 6%;
 }
 
 .userPass {
     border: none;
     outline: none;
+    width: 94%;
+    background: var(--box-bg);
+    color: var(--text-color);
 }
 
 input[type="submit"] {
@@ -93,7 +97,7 @@ a {
     }
 
     input[type=number],
-    input[type="password"] {
+    .password-container {
         width: 90%;
     }
 }

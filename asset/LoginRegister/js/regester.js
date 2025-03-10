@@ -122,9 +122,10 @@ formRegister.addEventListener("submit", async (event) => {
         userLastName.value = '';
         userPass.value = '';
         userNumberPhone.value = '';
-        swal("موفق", data.message, "success", {
+        await swal("موفق", data.message, "success", {
           button: "باشه",
         });
+        window.location.href = "https://bernada.ir/login";
       } else {
         swal("ناموفق", data.message || "ثبت نام با مشکل مواجه شد لطفاً دوباره تلاش کنید.", "error", {
           button: "باشه",

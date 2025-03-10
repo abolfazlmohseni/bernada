@@ -192,7 +192,7 @@ buildFromSubmit.addEventListener('click', async function () {
             await swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته شد`, "success", {
                 button: "باشه",
             });
-            window.location.href = "https://bernada.ir/overview";
+            window.location.href = "https://bernada.ir/allPlan";
         } else {
             const errorMessage = await response.text();
             swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {

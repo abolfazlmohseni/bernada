@@ -46,7 +46,9 @@ app.get('/delay', (req, res) => {
 app.get('/buildprogram', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'Dashboard', 'buildprogram', 'buildprogram.html'))
 })
-
+app.get("/allPlan",(req,res)=>{
+    res.sendFile(path.join(__dirname,'..','Dashboard','allPlan','allPlan.html'))
+})
 const mongoURI = process.env.DATABASE_URL || "mongodb://root:0c15ZMdwTKWV08Ddkmd6N6hf@planer-detabise:27017/my-app?authSource=admin";
 mongoose.connect(mongoURI)
     .then(() => console.log(' Connected to MongoDB'))

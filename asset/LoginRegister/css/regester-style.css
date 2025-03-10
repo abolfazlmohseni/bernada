@@ -63,6 +63,7 @@ form {
     border: none;
     outline: none;
     width: 94%;
+    background: var(--box-bg);
 }
 
 input[type="submit"] {

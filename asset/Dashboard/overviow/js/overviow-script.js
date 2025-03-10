@@ -6,7 +6,7 @@ const getUserSchedule = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
         if (!response.ok) {
-            throw new Error("Error fetching schedule");
+          console.log("error")
         }
         const data = await response.json();
 
@@ -91,7 +91,7 @@ const getUserSchedulee = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
         if (!response.ok) {
-            throw new Error("Error fetching schedule");
+            console.log("error")
         }
         const data = await response.json();
         if (data.schedule) {
