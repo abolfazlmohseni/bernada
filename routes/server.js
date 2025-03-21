@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 const taskRoutes = require("./task");
 app.use("/task", taskRoutes);
 const corsOptions = {
-    origin: ["https://itabolfazlmohseni.ir"],
+    origin: ["https://bernada.ir"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true
 };
