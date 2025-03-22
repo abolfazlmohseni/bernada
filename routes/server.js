@@ -26,28 +26,28 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '..', 'asset')));
 app.use(express.static(path.join(__dirname, '..', 'asset')));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'landing', 'landing.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'landing', 'landing.html'));
 });
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'LoginRegister', 'login.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'LoginRegister', 'login.html'));
 });
 app.get('/overview', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'Dashboard', 'overviow', 'overview.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'overviow', 'overview.html'));
 });
 app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'LoginRegister', 'register.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'LoginRegister', 'register.html'));
 });
 app.get('/today', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'Dashboard', 'today','today.html'))
+    res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'today', 'today.html'))
 })
 app.get('/delay', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'Dashboard','delay', 'delay.html'))
+    res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'delay', 'delay.html'))
 })
 app.get('/buildprogram', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'Dashboard', 'buildprogram', 'buildprogram.html'))
+    res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'buildprogram', 'buildprogram.html'))
 })
-app.get("/allPlan",(req,res)=>{
-    res.sendFile(path.join(__dirname,'..','Dashboard','allPlan','allPlan.html'))
+app.get("/allPlan", (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'allPlan', 'allPlan.html'))
 })
 const mongoURI = process.env.DATABASE_URL || "mongodb://root:0c15ZMdwTKWV08Ddkmd6N6hf@planer-detabise:27017/my-app?authSource=admin";
 mongoose.connect(mongoURI)
