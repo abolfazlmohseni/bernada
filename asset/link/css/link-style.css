@@ -1,0 +1,128 @@
+.sectionOne {
+    margin-top: 3rem;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sectionOne h1 {
+    margin: 0;
+}
+
+.border-bottom {
+    height: 4px;
+    border-radius: 8px;
+    background: var(--theme-primary);
+    margin-top: 0.5rem;
+}
+
+.One {
+    width: 10%;
+}
+
+.sectionTwo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: 3rem auto 0;
+
+}
+
+.sectionTwo-right {
+    width: 40%;
+}
+
+.sectionTwo-right__header h3 {
+    margin: 0;
+}
+
+.Two {
+    width: 52%;
+}
+
+.sectionTwo-right__capshion {
+    text-align: justify;
+    width: 65%;
+}
+
+.right__capshion-text {}
+
+.right__capshion-item {
+    display: flex;
+    align-items: center;
+}
+
+.right__capshion-item p {
+    margin: 5px 0;
+}
+
+.circle {
+    margin-left: 7px;
+}
+
+.sectionTwo-left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionTwo-left__con {
+    background: var(--box-bg);
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px 10px var(--box-shadow-color);
+    padding: 10px;
+    width: 40%;
+}
+
+.sectionTwo-left__header {
+    text-align: center;
+}
+
+.sectionTwo-left__form {}
+
+.left__form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.left__form-item label {
+    color: var(--color-number);
+}
+
+.left__form-item input {
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 14px;
+    font-size: 16px;
+    padding: 6px 6px;
+    width: 100%;
+    outline: none;
+    margin-top: 5px;
+}
+
+.left__form-capshion {
+
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 14px;
+    font-size: 16px;
+    padding: 3px 6px;
+    width: 100%;
+    outline: none;
+    resize: vertical;
+}
+.sendBTN{
+    border: none;
+    background: var(--theme-primary);
+    color: var(--white-color);
+    border-radius: 8px;
+    padding: 6px;
+}
+.errText{
+    color: rgb(255,0,0);
+    margin: 0;
+    display: none;
+}

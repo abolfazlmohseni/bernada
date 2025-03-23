@@ -1,0 +1,163 @@
+.sectionOne,
+.titel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.sectionOne h1 {
+    margin: 0;
+}
+
+.border-bottom {
+    height: 4px;
+    background: var(--theme-primary);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+.One {
+    width: 20%;
+}
+
+
+.titel h2 {
+    margin: 0;
+}
+
+.Two {
+    width: 12%;
+}
+
+.sectionTwo,
+.sectionTree,
+.sectionFour {
+    width: 95%;
+    margin: 3rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sectionTwo-right,
+.sectionTwo-left,
+.sectionTree-right,
+.sectionTree-left,
+.sectionFour-right,
+.sectionFour-left {
+    width: 50%;
+}
+
+.sectionTwo-left,
+.sectionTree-left,
+.sectionFour-left {
+    margin-top: 5rem;
+}
+
+.sectionTwo-right__header h3,
+.sectionTwo-left__header h3,
+.sectionTree-right__header h3,
+.sectionTree-left__header h3,
+.sectionFour-right__header h3,
+.sectionFour-left__header h3 {
+    margin: 0;
+}
+
+.Tree,
+.four,
+.six {
+    width: 14%;
+}
+
+.right__capshion-item {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.right__capshion-item p {
+    margin: 3px 0;
+}
+
+.circle {
+    margin-left: 7px;
+}
+
+.sectionTwo-left__capshion,
+.sectionTree-right__capshion,
+.sectionTree-left__capshion,
+.sectionFour-right__capshion,
+.sectionFour-left__capshion {
+    width: 45%;
+}
+
+.five {
+    width: 31%;
+}
+
+.bold-text {
+    font-weight: 600;
+}
+
+.seven {
+    width: 19%;
+}
+
+
+.eight {
+    width: 29%;
+}
+
+.nin {
+    width: 11%;
+}
+
+.sectionFive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 320px;
+    width:95%;
+    margin: 3rem auto 5rem; 
+}
+
+.acarseion {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px #00000025, -2px -2px 8px #00000025;
+    cursor: pointer;
+}
+
+.titel-box {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.titel-box .bi {
+    color: var(--theme-primary) !important;
+}
+
+.capshon-box {
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.capshon-box.active {
+    max-height: 100px;
+    opacity: 1;
+}

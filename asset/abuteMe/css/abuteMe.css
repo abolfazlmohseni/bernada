@@ -1,0 +1,97 @@
+.sectionOne {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionOne h1 {
+    margin: 0;
+}
+
+.line-bottom {
+    height: 4px;
+    background: var(--theme-primary);
+    border-radius: 8px;
+    margin-top: 0.3rem;
+}
+
+.One {
+    width: 12%;
+}
+
+.sectionTwo,
+.sectionTree,
+.sectionfuor {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 3rem auto 0;
+}
+
+.sectionTwo-left,
+.sectionTree-left,
+.sectionfuor-left {
+    width: 49%;
+}
+
+.sectionTwo-left__head h3,
+.sectionTree-left__head h3,
+.sectionfuor-left__head h3 {
+    margin: 0;
+}
+
+.Two {
+    width: 39%;
+}
+
+.sectionTwo-left__capshion,
+.sectionTree-left__capshion,
+.sectionfuor-left__capshion {
+    width: 64%;
+    text-align: justify;
+    font-size: 18px;
+
+}
+
+.sectionTwo-left__capshion p,
+.sectionTree-left__capshion p,
+.sectionfuor-left__capshion p {
+    margin: 10px 0;
+}
+
+.sectionTwo-right,
+.sectionTree-right,
+.sectionfuor-right {
+    margin-top: 5rem;
+    width: 50%;
+}
+
+.Tree {
+    width: 35%;
+}
+
+.sectionTwo-left__capshion p:not(:first-child) {
+
+    width: 115%;
+}
+
+.fuor {
+    width: 11%;
+}
+
+.sectionTree-left__capshion {
+    width: 68%;
+}
+
+.five {
+    width: 14%;
+}
+
+.six {
+    width: 23%;
+}
+
+.seven {
+    width: 17%;
+}

@@ -28,6 +28,18 @@ app.use(express.static(path.join(__dirname, '..', 'asset')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'landing', 'landing.html'));
 });
+app.get('/sitemap', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'landing', 'sitemap.xml'))
+})
+app.get('/aboutMe', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'landing', 'aboutMe.html'));
+});
+app.get('/link', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'landing', 'link.html'));
+});
+app.get('/guide', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'landing', 'guide.html'));
+});
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'LoginRegister', 'login.html'));
 });
@@ -49,7 +61,7 @@ app.get('/buildprogram', (req, res) => {
 app.get("/allPlan", (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'allPlan', 'allPlan.html'))
 })
-const mongoURI = process.env.DATABASE_URL || "mongodb://root:0c15ZMdwTKWV08Ddkmd6N6hf@planer-detabise:27017/my-app?authSource=admin";
+const mongoURI = process.env.DATABASE_URL || "mongodb://root:wx1lPKo3RwxMyYEGaTwXBw6f@dataplaner:27017/my-app?authSource=admin";
 mongoose.connect(mongoURI)
     .then(() => console.log(' Connected to MongoDB'))
     .catch((error) => console.error(' MongoDB connection error:', error));
