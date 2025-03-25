@@ -6,7 +6,7 @@ const getUserSchedule = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
         if (!response.ok) {
-          console.log("error")
+            console.log("error")
         }
         const data = await response.json();
 
@@ -60,12 +60,10 @@ const showIncompleteScheduleForDay = (day) => {
     });
 };
 
-
 const getDayOfWeeks = () => {
-    const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
+    const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();
-    const dayIndex = today.getDay();
-    return daysOfWeek[dayIndex];
+    return daysOfWeek[today.getDay()];
 };
 
 function task(id) {
@@ -129,6 +127,7 @@ const showIncompleteSchedulesBeforeToday = (day) => {
     conteyner__left.innerHTML = "";
 
     if (previousSchedules.length > 0) {
+        conteyner__left.innerHTML = ""; // پاک کردن محتوای قبلی برای جلوگیری از تکرار
         previousSchedules.forEach(activity => {
             conteyner__left.insertAdjacentHTML("beforeend", `
                 <div class="left-meddel__items" data-id="${activity._id}">
@@ -137,9 +136,24 @@ const showIncompleteSchedulesBeforeToday = (day) => {
                 </div>
             `);
         });
+
+        // بعد از اضافه شدن عناصر، رویدادها را ثبت می‌کنیم
+        document.querySelectorAll(".left-meddel__items").forEach(item => {
+            item.addEventListener("click", () => {
+                const taskId = item.getAttribute("data-id");
+                task(taskId);
+
+                let icon = item.querySelector(".bi");
+                if (icon) {
+                    icon.classList = "bi bi-check-square";
+                }
+            });
+        });
+
     } else {
-        conteyner__left.insertAdjacentHTML("beforeend", `<p>هیچ برنامه‌ای برای روزهای قبل از امروز وجود ندارد.</p>`);
+        conteyner__left.innerHTML = `<p>هیچ برنامه‌ای برای روزهای قبل از امروز وجود ندارد.</p>`;
     }
+
 };
 
 const getIncompleteScheduleForDayi = (day) => {
@@ -149,10 +163,10 @@ const getIncompleteScheduleForDayi = (day) => {
 const showIncompleteScheduleForDayi = (day) => {
     const workDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه"];
     conteyner__right.innerHTML = "";
-
     if (workDays.includes(day)) {
         const activities = getIncompleteScheduleForDayi(day);
         if (activities.length > 0) {
+            conteyner__right.innerHTML = ""; // پاک کردن محتوا برای جلوگیری از تکرار
             activities.forEach(activity => {
                 conteyner__right.insertAdjacentHTML("beforeend", `
                     <div class="right-meddel__items" data-id="${activity._id}">
@@ -161,25 +175,25 @@ const showIncompleteScheduleForDayi = (day) => {
                     </div>
                 `);
             });
+
+            // اینجا بعد از اضافه شدن، رویدادها را ثبت می‌کنیم
+            document.querySelectorAll(".right-meddel__items").forEach(item => {
+                item.addEventListener("click", () => {
+                    const taskId = item.getAttribute("data-id");
+                    task(taskId);
+                    let icon = item.querySelector(".bi");
+                    icon.classList = "bi bi-check-square";
+                });
+            });
         } else {
             conteyner__right.insertAdjacentHTML("beforeend", `<p>هیچ برنامه‌ای برای امروز وجود ندارد.</p>`);
         }
     }
-
-    document.querySelectorAll(".right-meddel__items").forEach(item => {
-        item.addEventListener("click", () => {
-            const taskId = item.getAttribute("data-id");
-            task(taskId);
-            var icon = item.querySelector(".bi");
-            icon.classList = "bi bi-check-square";
-        });
-    });
 };
 
 
 const getDayOfWeek = () => {
-    const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
+    const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();
-    const dayIndex = today.getDay();
-    return daysOfWeek[dayIndex];
+    return daysOfWeek[today.getDay()];
 };

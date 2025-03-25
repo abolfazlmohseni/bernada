@@ -22,10 +22,6 @@ const scheduleSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  studyHoursPerDay: {
-    type: Number,
-    required: true
-  },
   schedule: {
     type: [taskSchema],
     required: true

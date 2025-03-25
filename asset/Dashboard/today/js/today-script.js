@@ -64,7 +64,7 @@ const showIncompleteScheduleForDay = (day) => {
 };
 
 const getDayOfWeek = () => {
-    const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
+    const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();
     return daysOfWeek[today.getDay()];
 };

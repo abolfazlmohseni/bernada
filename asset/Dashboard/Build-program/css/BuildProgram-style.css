@@ -22,7 +22,8 @@
 .maghta,
 .paye,
 .teshte,
-.hour {
+.hour,
+.start {
     position: relative;
     width: 95%;
 }
@@ -30,7 +31,8 @@
 .selectmaghta,
 .selectpaye,
 .selectTeshte,
-.selecthour {
+.selecthour,
+.selectstart {
     display: flex;
     margin: 20px auto;
     justify-content: space-between;
@@ -43,7 +45,8 @@
 .selectmaghta p,
 .selectpaye p,
 .selectTeshte p,
-.selecthour p {
+.selecthour p,
+.selectstart p {
     margin: 0;
 }
 
@@ -52,7 +55,8 @@
 .opshionCon,
 .opshionCon-paye,
 .opshionCon-teshte,
-.opshionCon-hour {
+.opshionCon-hour,
+.opshionCon-start {
     width: 95%;
     margin: 0 auto;
     background: var(--box-bg);
@@ -64,6 +68,8 @@
     left: 10px;
     display: none;
     z-index: 5;
+    max-height: 200px;
+    overflow: auto;
 }
 
 .opshionCon-maghta,

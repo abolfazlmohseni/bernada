@@ -5,7 +5,8 @@ let selectedValues = {
     maghta: null,
     paye: null,
     teshte: null,
-    hour: null
+    hour: null,
+    startTime: null
 };
 const payeData = {
     ebtedayi: ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم"],
@@ -112,6 +113,15 @@ document.querySelectorAll(".opshionCon-hour > div").forEach(item => {
     });
 
 });
+document.querySelectorAll(".opshionCon-start > div").forEach(item => {
+    item.addEventListener("click", function () {
+        const valueHour = document.querySelector(".value-start");
+        valueHour.innerHTML = this.innerHTML;
+        selectedValues.startTime = this.dataset.hour;
+        document.querySelector(".opshionCon-start").classList.remove("show", "anime");
+        console.log(selectedValues.startTime);
+    });
+});
 const buildFromSubmit = document.querySelector('.buildFrom-submit');
 buildFromSubmit.addEventListener('click', async function () {
     let userInfo = {
@@ -164,21 +174,100 @@ buildFromSubmit.addEventListener('click', async function () {
             }
         }
     }
-    let time = null;
-    if (selectedValues.hour === "two") {
-        time = 2;
-    } else if (selectedValues.hour === "four") {
-        time = 4;
-    } else {
-        time = 6;
+    // نقشه زمانی برای ساعت‌ها
+    const timeMap = {
+        "two": 2,
+        "four": 4,
+        "six": 6
+    };
+
+    // استفاده از شیء برای تعیین زمان
+    let time = timeMap[selectedValues.hour];
+    console.log(time)
+    // یک شیء برای نگه‌داری نقشه زمانی
+    const startMap = {
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9,
+        "ten": 10,
+        "eleven": 11,
+        "twelve": 12,
+        "thirteen": 13,
+        "fourteen": 14,
+        "fifteen": 15,
+        "sixteen": 16,
+        "seventeen": 17,
+        "eighteen": 18,
+        "nineteen": 19,
+        "twenty": 20,
+        "twentyone": 21,
+        "twentytwo": 22,
+        "twentythree": 23,
+        "twentyfour": 24,
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5
+    };
+
+    let startTime = startMap[selectedValues.startTime] || null;
+
+    // تابع برای تبدیل ساعت اعشاری به ساعت:دقیقه و کنترل عبور از 24
+    function decimalToTime(decimal) {
+        let hour = Math.floor(decimal) % 24;  // اگر از 24 عبور کرد، ساعت را به 0-23 تبدیل کند
+        let minute = Math.round((decimal - Math.floor(decimal)) * 60);
+        return { hour, minute };
     }
+
+    // شروع پردازش
+    let output = [];
+
+    // گروه‌بندی فعالیت‌ها بر اساس روز
+    let groupedActivities = barnameuser.reduce((acc, session) => {
+        if (!acc[session.day]) acc[session.day] = [];
+        acc[session.day].push(session);
+        return acc;
+    }, {});
+
+    // پردازش برنامه برای هر روز
+    Object.keys(groupedActivities).forEach(day => {
+        let currentStartTime = startTime;
+
+        groupedActivities[day].forEach(session => {
+            let activityDuration = session.activityDuration;
+
+            // محاسبه زمان پایان
+            let currentEndTime = currentStartTime + activityDuration;
+
+            // تبدیل ساعت شروع و پایان به ساعت:دقیقه
+            let start = decimalToTime(currentStartTime);
+            let end = decimalToTime(currentEndTime);
+
+            // ذخیره فعالیت در آرایه خروجی
+            output.push({
+                day: day,
+                startTime: `${start.hour}:${start.minute < 10 ? '0' + start.minute : start.minute}`,
+                endTime: `${end.hour}:${end.minute < 10 ? '0' + end.minute : end.minute}`,
+                activity: session.activity
+            });
+
+            // به‌روزرسانی ساعت شروع برای فعالیت بعدی
+            currentStartTime = currentEndTime;
+        });
+    });
+
+    console.log(output);
+
     const scheduleInfo = {
         userphon: JSON.parse(localStorage.getItem('user')).numberPhone,
         fieldOfStudy: selectedValues.teshte,
         educationLevel: selectedValues.maghta,
-        studyHoursPerDay: time,
-        schedule: barnameuser
+        
+        schedule: output
     };
+    console.log(scheduleInfo);
     try {
         const response = await fetch('https://bernada.ir/api/schedule', {
             method: 'POST',

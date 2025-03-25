@@ -10,8 +10,8 @@ const getUserSchedule = async (userphon) => {
         const data = await response.json();
 
         if (data && Array.isArray(data.schedule)) {
-            scheduleData = data.schedule; 
-            showIncompleteSchedulesBeforeToday(getDayOfWeek()); 
+            scheduleData = data.schedule;
+            showIncompleteSchedulesBeforeToday(getDayOfWeek());
         } else {
             console.error("Data does not contain a valid schedule array.");
         }
@@ -32,7 +32,7 @@ const getIncompleteSchedulesBeforeToday = (todayDay) => {
 
     const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
     const todayIndex = daysOfWeek.indexOf(todayDay);
-    const previousDays = daysOfWeek.slice(0, todayIndex);  
+    const previousDays = daysOfWeek.slice(0, todayIndex);
     console.log('Previous Days:', previousDays);
 
     return scheduleData.filter(entry => {
@@ -66,9 +66,8 @@ const showIncompleteSchedulesBeforeToday = (day) => {
 };
 
 const getDayOfWeek = () => {
-    const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
+    const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();
     const dayIndex = today.getDay();
-    console.log('Today is:', daysOfWeek[dayIndex]);
     return daysOfWeek[dayIndex];
 };

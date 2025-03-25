@@ -14,6 +14,7 @@ acarseionElem.forEach(function (item) {
                 otherCapshonBox.classList.add("none");
                 otherIcon.classList.remove("bi-caret-down-fill");
                 otherIcon.classList.add("bi-caret-left-fill");
+              
             }
         });
 
