@@ -1,3 +1,4 @@
+/* کد های مربوط به main */
 .sectionOne {
     margin-top: 3rem;
     width: 95%;
@@ -48,8 +49,6 @@
     width: 65%;
 }
 
-.right__capshion-text {}
-
 .right__capshion-item {
     display: flex;
     align-items: center;
@@ -75,14 +74,12 @@
     border-radius: 8px;
     box-shadow: 3px 3px 5px 10px var(--box-shadow-color);
     padding: 10px;
-    width: 40%;
+    width: 50%;
 }
 
 .sectionTwo-left__header {
     text-align: center;
 }
-
-.sectionTwo-left__form {}
 
 .left__form-item {
     display: flex;
@@ -114,15 +111,47 @@
     outline: none;
     resize: vertical;
 }
-.sendBTN{
+
+.sendBTN {
     border: none;
     background: var(--theme-primary);
     color: var(--white-color);
     border-radius: 8px;
     padding: 6px;
 }
-.errText{
-    color: rgb(255,0,0);
+
+.errText {
+    color: rgb(255, 0, 0);
     margin: 0;
     display: none;
+}
+/* ریسپاسیو سازی */
+@media only screen and (max-width:768px) {
+    .sectionTwo-right {
+        width: 55%;
+    }
+
+    .sectionTwo-left {
+        width: 45%;
+    }
+
+    .sectionTwo-left__con {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .sectionTwo {
+        flex-direction: column;
+    }
+
+    .sectionTwo-right,
+    .sectionTwo-left {
+        width: 95%;
+        margin: 0 auto 2rem;
+    }
+
+    .sectionTwo-right__capshion {
+        width: 95%;
+    }
 }

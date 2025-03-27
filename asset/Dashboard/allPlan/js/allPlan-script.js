@@ -1,6 +1,7 @@
+// دریافت شماره تلفن کاربر از Local Storage و بررسی وجود آن
 const phoneNumber = JSON.parse(localStorage.getItem('user'))?.numberPhone || "";
 let scheduleData = { schedule: [] };
-
+// دریافت برنامه کاربر از سرور
 const getUserSchedule = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
@@ -16,17 +17,17 @@ const getUserSchedule = async (userphon) => {
         console.error("Error:", error);
     }
 };
-
+// بررسی شماره تلفن و در صورت معتبر بودن، دریافت برنامه کاربر
 if (phoneNumber) {
     getUserSchedule(phoneNumber);
 } else {
     console.error("شماره تلفن نامعتبر است.");
 }
-
+// انتخاب عناصر مورد استفاده
 const opartorashon = document.querySelector(".opartorashon");
 const tabel = document.querySelector("table");
 const bikari = document.querySelector(".bikari");
-
+// نمایش برنامه در جدول
 const showSchedule = () => {
     opartorashon.innerHTML = "";
 

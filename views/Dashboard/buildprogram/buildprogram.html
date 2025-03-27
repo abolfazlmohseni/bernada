@@ -16,6 +16,7 @@
 
 <body>
     <div class="conteyner">
+        <!-- menu -->
         <menu>
             <div class="topmenu">
                 <div class="menu-berand">
@@ -43,8 +44,12 @@
             <div class="menu-item">
                 <a href="/buildprogram">ساخت برنامه درسی</a>
             </div>
-
+            <div class="menu-item">
+                <a href="/">خروج</a>
+            </div>
         </menu>
+        <!-- menu End! -->
+<!-- main -->
         <main>
 
             <header>
@@ -222,7 +227,8 @@
                 </div>
             </div>
         </main>
-
+<!-- main End! -->
+<!-- دکمه تنظیمات تم -->
         <div class="btnThemeSetting">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler icon-tabler-settings" width="24px" height="24px"
                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -234,7 +240,7 @@
                 <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
             </svg>
         </div>
-
+<!-- پاپ آپ تنظیمات تم -->
         <div class="popup-conteyner" style="display: none;">
             <div class="popUp-themeSetting">
                 <div class="popUp-themeSetting__header">
@@ -307,6 +313,33 @@
             <div class="box-Right"></div>
         </div>
     </div>
+<!-- پاپ آپ راهنما -->
+    <div class="guide-popup">
+        <div class="guide-popup__header">
+            <img src="/imag/warning.svg" alt="ایکون هشدار" width="84">
+            <h3>مطالعه راهنما</h3>
+        </div>
+        <div class="guide-popup__meddel">
+            <div class="popup__meddel-item">
+                <div class="circle"></div><p>ساعات مطالعه به صورت مطالعه خالص در نظر گرفته شده است</p>
+            </div>
+            <div class="popup__meddel-item">
+                <div class="circle"></div><p>برای ساعتی را برای شروع مطالعه انتخاب کنید که در ان احساس راحتی بیشتری دارید</p>
+            </div>
+            <div class="popup__meddel-item">
+                <div class="circle"></div><p>برای مطالعه بیشتر میتوانید به صفحه راهنما مراجعه کنید</p>
+            </div>
+            <div class="popup__meddel-item">
+                <div class="circle"></div><a href="/guide">صفحه راهنما</a>
+            </div>
+        </div>
+        <div class="guide-popup__bottom">
+            <button class="popup__bottom-BTN">باشه</button>
+        </div>
+    </div>
+
+
+
     <script src="/setting/js/themeSet.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="module" src="/Dashboard/Build-program/js/BuildProgramJs.js"></script>

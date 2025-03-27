@@ -1,6 +1,7 @@
+//گرفتن شماره تلفن کاربر از لوکال استورج
 const phoneNumber = JSON.parse(localStorage.getItem('user'))?.numberPhone || "";
 let scheduleData = { schedule: [] };
-
+// دریافت برنامه کاربر از دیتابیس
 const getUserSchedule = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
@@ -16,13 +17,13 @@ const getUserSchedule = async (userphon) => {
         console.error("Error:", error);
     }
 };
-
+// بررسی شماره تلفن و در صورت معتبر بودن، دریافت برنامه کاربر
 if (phoneNumber) {
     getUserSchedule(phoneNumber);
 } else {
     console.error("شماره تلفن نامعتبر است.");
 }
-
+// انتخاب عناصر مورد استفاده
 const opartorashon = document.querySelector(".opartorashon");
 const tabel = document.querySelector("table");
 const bikari = document.querySelector(".bikari");
@@ -32,7 +33,7 @@ const getIncompleteScheduleForDay = (day) => {
         ? scheduleData.schedule.filter(entry => entry.day === day && entry.completed === false)
         : [];
 };
-
+// نمایش برنامه‌های ناتمام برای یک روز
 const showIncompleteScheduleForDay = (day) => {
     const workDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه"];
     opartorashon.innerHTML = "";
@@ -62,7 +63,7 @@ const showIncompleteScheduleForDay = (day) => {
         bikari.style.display = "block";
     }
 };
-
+// گرفتن روز هفته
 const getDayOfWeek = () => {
     const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();

@@ -1,3 +1,4 @@
+/* استایل های مربوط به فرم ثبت نام */
 body {
     margin: 0;
     padding: 0;
@@ -123,7 +124,7 @@ select {
     text-align: start;
     width: 79%;
 }
-
+/* ریسپاسیو سازی */
 @media only screen and (max-width: 425px) {
     .regesterForm {
         width: 400px;

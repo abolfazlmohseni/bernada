@@ -1,7 +1,9 @@
+// گرفتن المان های لازم
 const btnThemeSetting = document.querySelector(".btnThemeSetting")
 const popUpThemeSetting = document.querySelector(".popUp-themeSetting")
 const popupConteyner = document.querySelector(".popup-conteyner")
 const boxRight = document.querySelector(".box-Right")
+// تعریف تم ها
 const themes = {
     themeBlue: {
         "--background-color": "#f0f5f9",
@@ -124,6 +126,7 @@ const themes = {
         "--white-color": "#fff"
     }
 };
+// اعمال تم ها
 document.addEventListener("DOMContentLoaded", () => {
 
     const savedTheme = localStorage.getItem("userTheme");
@@ -182,7 +185,7 @@ document.querySelectorAll(".light-item__theme, .dark-item__theme").forEach(item 
         }
     });
 });
-
+// پاپ اپ تغییر تم
 btnThemeSetting.addEventListener("click", () => {
     if (popupConteyner.style.display == "none") {
         popUpThemeSetting.style.left = "0"

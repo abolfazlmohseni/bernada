@@ -2,32 +2,28 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const router = express.Router();
-
+// ثبت‌نام کاربر جدید
 router.post('/register', async (req, res) => {
   const { username, numberPhone, password } = req.body;
 
   try {
-    // بررسی وجود کاربر با شماره تلفن
+ 
     const existingUser = await User.findOne({ numberPhone });
     if (existingUser) {
-      // اگر کاربر قبلاً وجود داشته باشد، پیامی به کاربر ارسال کنید
+      
       return res.status(400).json({ message: 'کاربر با این شماره تلفن قبلاً ثبت‌نام کرده است.' });
     }
 
-    // رمز عبور را هش کنید
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // کاربر جدید را ایجاد کنید
     const newUser = new User({
       username,
       numberPhone,
       password: hashedPassword,
     });
 
-    // کاربر را ذخیره کنید
     await newUser.save();
 
-    // ارسال پیام موفقیت
     res.status(201).json({
       message: 'ثبت‌نام با موفقیت انجام شد.',
       user: {
@@ -43,7 +39,7 @@ router.post('/register', async (req, res) => {
 
 module.exports = router;
 
-
+// ورود کاربر
 router.post('/login', async (req, res) => {
   const { numberPhone, password } = req.body;
 

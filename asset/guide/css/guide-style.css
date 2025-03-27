@@ -1,3 +1,4 @@
+/* کد های مربوط به main */
 .sectionOne,
 .titel {
     display: flex;
@@ -38,7 +39,7 @@
     margin: 3rem auto 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 }
 
 .sectionTwo-right,
@@ -47,14 +48,13 @@
 .sectionTree-left,
 .sectionFour-right,
 .sectionFour-left {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 50%;
 }
 
-.sectionTwo-left,
-.sectionTree-left,
-.sectionFour-left {
-    margin-top: 5rem;
-}
 
 .sectionTwo-right__header h3,
 .sectionTwo-left__header h3,
@@ -67,8 +67,11 @@
 
 .Tree,
 .four,
-.six {
-    width: 14%;
+.five,
+.six,
+.seven,
+.eight {
+    width: 100% !important;
 }
 
 .right__capshion-item {
@@ -85,6 +88,7 @@
     margin-left: 7px;
 }
 
+.sectionTwo-right__capshion,
 .sectionTwo-left__capshion,
 .sectionTree-right__capshion,
 .sectionTree-left__capshion,
@@ -93,22 +97,11 @@
     width: 45%;
 }
 
-.five {
-    width: 31%;
-}
 
 .bold-text {
     font-weight: 600;
 }
 
-.seven {
-    width: 19%;
-}
-
-
-.eight {
-    width: 29%;
-}
 
 .nin {
     width: 11%;
@@ -120,8 +113,8 @@
     justify-content: space-between;
     align-items: center;
     height: 320px;
-    width:95%;
-    margin: 3rem auto 5rem; 
+    width: 95%;
+    margin: 3rem auto 5rem;
 }
 
 .acarseion {
@@ -160,4 +153,60 @@
 .capshon-box.active {
     max-height: 100px;
     opacity: 1;
+}
+/* ریسپاسیو سازی */
+@media only screen and (max-width:1024px) {
+
+    .sectionTwo-right__capshion,
+    .sectionTwo-left__capshion,
+    .sectionTree-right__capshion,
+    .sectionTree-left__capshion,
+    .sectionFour-right__capshion,
+    .sectionFour-left__capshion {
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .sectionTwo-right__capshion,
+    .sectionTwo-left__capshion,
+    .sectionTree-right__capshion,
+    .sectionTree-left__capshion,
+    .sectionFour-right__capshion,
+    .sectionFour-left__capshion {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+
+    .sectionTwo,
+    .sectionTree,
+    .sectionFour {
+        flex-direction: column;
+    }
+
+    .sectionTwo-right,
+    .sectionTwo-left,
+    .sectionTree-right,
+    .sectionTree-left,
+    .sectionFour-right,
+    .sectionFour-left {
+
+        width: 95%;
+        margin: 0 auto 2rem
+    }
+}
+
+@media only screen and (max-width: 320px) {
+
+    .sectionTwo-right__capshion,
+    .sectionTwo-left__capshion,
+    .sectionTree-right__capshion,
+    .sectionTree-left__capshion,
+    .sectionFour-right__capshion,
+    .sectionFour-left__capshion {
+        width: 100%;
+    }
 }

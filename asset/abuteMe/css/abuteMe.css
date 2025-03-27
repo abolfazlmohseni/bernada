@@ -1,3 +1,4 @@
+/* کد های بخش main */
 .sectionOne {
     margin-top: 4rem;
     display: flex;
@@ -25,14 +26,20 @@
 .sectionfuor {
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 90%;
     margin: 3rem auto 0;
 }
 
 .sectionTwo-left,
 .sectionTree-left,
-.sectionfuor-left {
-    width: 49%;
+.sectionfuor-left,
+.sectionTwo-right,
+.sectionTree-right,
+.sectionfuor-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sectionTwo-left__head h3,
@@ -41,8 +48,13 @@
     margin: 0;
 }
 
-.Two {
-    width: 39%;
+.Two,
+.Tree,
+.fuor,
+.five,
+.six,
+.seven {
+    width: 100%;
 }
 
 .sectionTwo-left__capshion,
@@ -60,38 +72,54 @@
     margin: 10px 0;
 }
 
-.sectionTwo-right,
-.sectionTree-right,
-.sectionfuor-right {
-    margin-top: 5rem;
-    width: 50%;
-}
 
-.Tree {
-    width: 35%;
-}
+
 
 .sectionTwo-left__capshion p:not(:first-child) {
 
     width: 115%;
 }
 
-.fuor {
-    width: 11%;
-}
 
 .sectionTree-left__capshion {
     width: 68%;
 }
 
-.five {
-    width: 14%;
+.boldtext {
+    font-weight: 600;
+    margin: 3px 0 !important;
 }
 
-.six {
-    width: 23%;
+/* ریسپانسیو سازی */
+@media only screen and (max-width:768px) {
+
+    .sectionTwo-left__capshion,
+    .sectionTree-left__capshion,
+    .sectionfuor-left__capshion {
+        width: 90%;
+    }
+
+    .sectionTwo-left__capshion p:not(:first-child) {
+        width: 100%;
+    }
 }
 
-.seven {
-    width: 17%;
+@media only screen and (max-width:425px) {
+
+    .sectionTwo,
+    .sectionTree,
+    .sectionfuor {
+        flex-direction: column;
+    }
+
+    .sectionTwo-left,
+    .sectionTree-left,
+    .sectionfuor-left,
+    .sectionTwo-right,
+    .sectionTree-right,
+    .sectionfuor-right {
+        width: 95%;
+        margin: 0 auto 2rem;
+    }
+
 }

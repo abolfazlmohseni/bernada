@@ -2,7 +2,7 @@ const express = require('express');
 const Schedule = require('../models/Schedule');
 const User = require('../models/User'); 
 const router = express.Router();
-
+// ارسال برنامه هفتگی کاربر
 router.get('/schedule/:userphon', async (req, res) => {
     const { userphon } = req.params;
     try {

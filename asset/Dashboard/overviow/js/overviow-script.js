@@ -1,7 +1,8 @@
+//گرفتن اطلاعات کاربر از لوکال استورج
 const phoneNumber = JSON.parse(localStorage.getItem('user')).numberPhone;
 const conteyner__right = document.querySelector(".conteyner__right-meddel");
 let scheduleData = { schedule: [] };
-
+// دریافت برنامه کاربر از دیتابیس
 const getUserSchedule = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
@@ -19,13 +20,13 @@ const getUserSchedule = async (userphon) => {
 };
 
 getUserSchedule(phoneNumber);
-
+// گرفتن برنامه‌های ناتمام برای یک روز
 const getIncompleteScheduleForDay = (day) => {
     return Array.isArray(scheduleData.schedule)
         ? scheduleData.schedule.filter(entry => entry.day === day && !entry.completed)
         : [];
 };
-
+// نمایش برنامه‌های ناتمام برای یک روز
 const showIncompleteScheduleForDay = (day) => {
     const workDays = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه"];
     conteyner__right.innerHTML = "";
@@ -59,32 +60,37 @@ const showIncompleteScheduleForDay = (day) => {
         });
     });
 };
-
+// گرفتن روز هفته
 const getDayOfWeeks = () => {
     const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();
     return daysOfWeek[today.getDay()];
 };
-
+// تغییر وضعیت یک تسک
 function task(id) {
-
     fetch(`https://bernada.ir/task/update-status/${phoneNumber}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ completed: true })
+        body: JSON.stringify({ completed: true }) // تغییر وضعیت به انجام‌شده
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`خطا در درخواست: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
-            console.log("Response:", data);
+            console.log("✅ تسک با موفقیت انجام شد:", data);
         })
         .catch(error => {
-            console.error("خطا در ارسال درخواست:", error);
+            console.error("❌ خطا در ارسال درخواست:", error);
         });
 }
+// نمایش برنامه‌های ناتمام برای یک روز
 let scheduleDatas = { schedule: [] };
-
+// دریافت برنامه کاربر از دیتابیس
 const getUserSchedulee = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
@@ -127,7 +133,7 @@ const showIncompleteSchedulesBeforeToday = (day) => {
     conteyner__left.innerHTML = "";
 
     if (previousSchedules.length > 0) {
-        conteyner__left.innerHTML = ""; // پاک کردن محتوای قبلی برای جلوگیری از تکرار
+        conteyner__left.innerHTML = ""; 
         previousSchedules.forEach(activity => {
             conteyner__left.insertAdjacentHTML("beforeend", `
                 <div class="left-meddel__items" data-id="${activity._id}">
@@ -166,7 +172,7 @@ const showIncompleteScheduleForDayi = (day) => {
     if (workDays.includes(day)) {
         const activities = getIncompleteScheduleForDayi(day);
         if (activities.length > 0) {
-            conteyner__right.innerHTML = ""; // پاک کردن محتوا برای جلوگیری از تکرار
+            conteyner__right.innerHTML = ""; 
             activities.forEach(activity => {
                 conteyner__right.insertAdjacentHTML("beforeend", `
                     <div class="right-meddel__items" data-id="${activity._id}">
@@ -191,7 +197,7 @@ const showIncompleteScheduleForDayi = (day) => {
     }
 };
 
-
+// گرفتن روز هفته
 const getDayOfWeek = () => {
     const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();

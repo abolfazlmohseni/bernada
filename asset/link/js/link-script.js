@@ -1,3 +1,5 @@
+//ارسال ایمیل
+//این کد برای ارسال ایمیل از طریق سایت استفاده میشود
 (function () {
     emailjs.init("G_SVtb3Lef7DlG04r");
 })();
@@ -30,8 +32,9 @@ document.querySelector(".sendBTN").addEventListener("click", function (event) {
             errText.style.color = "#008000"
             errText.style.display = "block"
         }, function (error) {
-            console.error("❌ خطا در ارسال ایمیل:", error);
-            alert("⚠️ خطایی رخ داد، لطفاً دوباره تلاش کنید.");
+            swal("ارسال پیام", `در ارسال پیام شما خطایی رخ داد`, "error", {
+                button: "باشه",
+            });
         });
 });
 

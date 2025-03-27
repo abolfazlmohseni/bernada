@@ -1,6 +1,7 @@
+// گرفتن شماره کاربر از لوکال استورج
 const phoneNumber = JSON.parse(localStorage.getItem('user')).numberPhone;
 let scheduleData = { schedule: [] };
-
+// دریافت برنامه کاربر از دیتابیس
 const getUserSchedule = async (userphon) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
@@ -23,7 +24,7 @@ const getUserSchedule = async (userphon) => {
 getUserSchedule(phoneNumber);
 
 const opartorashon = document.querySelector(".opartorashon");
-
+// گرفتن برنامه های عقب افتاده تا امروز
 const getIncompleteSchedulesBeforeToday = (todayDay) => {
     if (!Array.isArray(scheduleData)) {
         console.error("scheduleData is not an array.");
@@ -33,17 +34,17 @@ const getIncompleteSchedulesBeforeToday = (todayDay) => {
     const daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"];
     const todayIndex = daysOfWeek.indexOf(todayDay);
     const previousDays = daysOfWeek.slice(0, todayIndex);
-    console.log('Previous Days:', previousDays);
+  
 
     return scheduleData.filter(entry => {
         console.log('Checking entry:', entry);
         return previousDays.includes(entry.day) && entry.completed === false;
     });
 };
-
+// نمایش برنامه های عقب افتاده تا امروز
 const showIncompleteSchedulesBeforeToday = (day) => {
     const previousSchedules = getIncompleteSchedulesBeforeToday(day);
-    console.log('Filtered Schedules:', previousSchedules);
+  
 
     if (previousSchedules.length > 0) {
         previousSchedules.forEach(activity => {
@@ -64,7 +65,7 @@ const showIncompleteSchedulesBeforeToday = (day) => {
         `);
     }
 };
-
+// گرفتن روز هفته
 const getDayOfWeek = () => {
     const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     const today = new Date();

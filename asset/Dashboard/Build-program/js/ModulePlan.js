@@ -1,4 +1,4 @@
-
+// ماژول برنامه های درسی
 const studyPlan = {
     ebtedayi: {
         twoH: [

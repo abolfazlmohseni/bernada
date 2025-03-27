@@ -1,3 +1,4 @@
+// گرفتن المان‌های مورد نیاز
 let $ = document;
 const formRegister = $.querySelector("form");
 const userName = $.querySelector(".userName");
@@ -10,13 +11,13 @@ const errtextLastname = $.querySelector(".errtextLastname");
 const charP = document.querySelector(".charP")
 const mixP = document.querySelector(".mixP")
 const togglePassword = document.querySelector('#togglePassword');
-
+// نمایش راهنمایی‌ها
 userPass.addEventListener("focus", () => {
   charP.style.display = "block";
   mixP.style.display = "block";
 });
 
-
+// تغییر نوع نمایش رمز عبور
 togglePassword.addEventListener('click', function (e) {
   const type = userPass.getAttribute('type') === 'password' ? 'text' : 'password';
   userPass.setAttribute('type', type);
@@ -24,6 +25,7 @@ togglePassword.addEventListener('click', function (e) {
   this.classList.toggle('bi-eye');
   this.classList.toggle('bi-eye-slash');
 });
+// بررسی وضعیت رمز عبور
 userPass.addEventListener("input", () => {
   const password = userPass.value;
   const charRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // ترکیب حروف و اعداد
@@ -31,21 +33,21 @@ userPass.addEventListener("input", () => {
 
   // بررسی حداقل طول
   if (lengthRegex.test(password)) {
-    charP.style.color = "green";  // رنگ سبز برای طول
+    charP.style.color = "green"; 
   } else {
-    charP.style.color = "red";    // رنگ قرمز برای طول کم
+    charP.style.color = "red";   
   }
 
   // بررسی ترکیب حروف و عدد
   if (charRegex.test(password)) {
-    mixP.style.color = "green";   // رنگ سبز برای ترکیب حروف و عدد
+    mixP.style.color = "green"; 
   } else {
-    mixP.style.color = "red";     // رنگ قرمز برای نبود ترکیب حروف و عدد
+    mixP.style.color = "red";    
   }
 });
 
 
-
+// تابع بررسی شماره تلفن
 function Confirmationnumber(numberPhone) {
   if (numberPhone.startsWith("0") && numberPhone.length === 11) {
     userNumberPhone.classList.remove("err");
@@ -58,10 +60,10 @@ function Confirmationnumber(numberPhone) {
   } else {
     userNumberPhone.classList.add("err");
     errtextNumberPhone.classList.add("show");
-    return undefined; // برگشت صریح undefined در صورت عدم اعتبار
+    return undefined; 
   }
 }
-
+// تابع بررسی رمز عبور
 function validatePassword(password) {
   const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   if (regex.test(password)) {
@@ -70,7 +72,7 @@ function validatePassword(password) {
 
   }
 }
-
+// تابع نماش پیام خطا
 function checkValueName(val) {
   if (val.length >= 3) {
     errtextName.classList.remove("show");
@@ -79,7 +81,7 @@ function checkValueName(val) {
     errtextName.classList.add("show");
   }
 }
-
+// تابع نماش پیام خطا
 function checkValueLastname(val) {
   if (val.length >= 3) {
     errtextLastname.classList.remove("show");
@@ -88,7 +90,7 @@ function checkValueLastname(val) {
     errtextLastname.classList.add("show");
   }
 }
-
+// ارسال فرم
 formRegister.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -106,7 +108,7 @@ formRegister.addEventListener("submit", async (event) => {
     };
 
     try {
-      console.log("API");
+     
       const response = await fetch('https://bernada.ir/api/auth/register', {
         method: 'POST',
         headers: {
@@ -132,7 +134,6 @@ formRegister.addEventListener("submit", async (event) => {
         });
       }
     } catch (error) {
-      console.log(error);
       swal("خطا", "مشکلی در ارتباط با سرور پیش آمده است. لطفاً دوباره تلاش کنید.", "error", {
         button: "باشه",
       });

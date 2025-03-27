@@ -1,6 +1,5 @@
-
+// ساخت اسکریپت برای اکاردئون ها
 const acarseionElem = document.querySelectorAll(".acarseion");
-
 acarseionElem.forEach(function (item) {
     item.addEventListener("click", function () {
         const capshonBox = item.querySelector(".capshon-box");

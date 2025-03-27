@@ -1,6 +1,7 @@
-import { studyPlan } from './ModulePlan.js'
+import { studyPlan } from './ModulePlan.js' // ایمپورت داده‌های مربوط به برنامه درسی
 let $ = document;
 const dropdowns = document.querySelectorAll(".buildFrom > div");
+// آبجکت برای ذخیره مقادیر انتخاب شده توسط کاربر
 let selectedValues = {
     maghta: null,
     paye: null,
@@ -119,7 +120,7 @@ document.querySelectorAll(".opshionCon-start > div").forEach(item => {
         valueHour.innerHTML = this.innerHTML;
         selectedValues.startTime = this.dataset.hour;
         document.querySelector(".opshionCon-start").classList.remove("show", "anime");
-        console.log(selectedValues.startTime);
+
     });
 });
 const buildFromSubmit = document.querySelector('.buildFrom-submit');
@@ -174,7 +175,7 @@ buildFromSubmit.addEventListener('click', async function () {
             }
         }
     }
-    // نقشه زمانی برای ساعت‌ها
+    // مپ کردن مقدار ورودی ساعت مطالعه به عدد صحیح
     const timeMap = {
         "two": 2,
         "four": 4,
@@ -184,7 +185,7 @@ buildFromSubmit.addEventListener('click', async function () {
     // استفاده از شیء برای تعیین زمان
     let time = timeMap[selectedValues.hour];
     console.log(time)
-    // یک شیء برای نگه‌داری نقشه زمانی
+    // مپ کردن مقدار ورودی ساعت شروع به عدد صحیح
     const startMap = {
         "six": 6,
         "seven": 7,
@@ -214,9 +215,9 @@ buildFromSubmit.addEventListener('click', async function () {
 
     let startTime = startMap[selectedValues.startTime] || null;
 
-    // تابع برای تبدیل ساعت اعشاری به ساعت:دقیقه و کنترل عبور از 24
+    // تابعی برای تبدیل ساعت اعشاری به قالب استاندارد (مثلاً 13.5 به 13:30)
     function decimalToTime(decimal) {
-        let hour = Math.floor(decimal) % 24;  // اگر از 24 عبور کرد، ساعت را به 0-23 تبدیل کند
+        let hour = Math.floor(decimal) % 24;
         let minute = Math.round((decimal - Math.floor(decimal)) * 60);
         return { hour, minute };
     }
@@ -238,10 +239,8 @@ buildFromSubmit.addEventListener('click', async function () {
         groupedActivities[day].forEach(session => {
             let activityDuration = session.activityDuration;
 
-            // محاسبه زمان پایان
             let currentEndTime = currentStartTime + activityDuration;
 
-            // تبدیل ساعت شروع و پایان به ساعت:دقیقه
             let start = decimalToTime(currentStartTime);
             let end = decimalToTime(currentEndTime);
 
@@ -253,21 +252,27 @@ buildFromSubmit.addEventListener('click', async function () {
                 activity: session.activity
             });
 
-            // به‌روزرسانی ساعت شروع برای فعالیت بعدی
             currentStartTime = currentEndTime;
         });
     });
 
     console.log(output);
 
+    const getDayOfWeeks = () => {
+        const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
+        const today = new Date();
+        return daysOfWeek[today.getDay()];
+    };
+
     const scheduleInfo = {
         userphon: JSON.parse(localStorage.getItem('user')).numberPhone,
         fieldOfStudy: selectedValues.teshte,
         educationLevel: selectedValues.maghta,
-        
-        schedule: output
+        schedule: output,
+        currentDay: getDayOfWeeks(),
     };
     console.log(scheduleInfo);
+    // ارسال برنامه کاربر به دیتابیس
     try {
         const response = await fetch('https://bernada.ir/api/schedule', {
             method: 'POST',
@@ -296,6 +301,12 @@ buildFromSubmit.addEventListener('click', async function () {
 });
 
 
+// پاپ اپ راهنما
+const popup = document.querySelector(".guide-popup")
+const popup__bottomBTN = document.querySelector(".popup__bottom-BTN")
 
+popup__bottomBTN.addEventListener("click", () => {
+    popup.style.display = "none"
+})
 
 

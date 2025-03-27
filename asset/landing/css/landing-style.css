@@ -1,3 +1,4 @@
+/* کد های مربوط به main */
 .sectionTwo,
 .sectionTree,
 .sectionFuor,
@@ -22,20 +23,8 @@
     border-radius: 8px;
 }
 
-.One {
-    width: 11%;
-}
-
-.Two {
-    width: 22%;
-}
-
-.Tree {
-    width: 15%;
-}
-
-.Five {
-    width: 25%;
+.One,.Two,.Tree,.Five {
+    width: 100%;
 }
 
 .sectionTwo-left__capshion {
@@ -50,6 +39,23 @@
 .sectionFive-right {
     width: 50%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionTwo-right,
+.sectionTree-right,
+.sectionFuor-right,
+.sectionFive-right,
+.sectionTwo-left,
+.sectionTree-left,
+.sectionFive-left,
+.sectionFuor-left,
+.sectionTree-right,
+.sectionFuor-right,
+.sectionFive-right {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -89,7 +95,9 @@
 
 .boardIMG {
     width: 250px;
-    margin-left: 50%;
+}
+
+/* margin-left: 50%;
 }
 
 .books {
@@ -98,18 +106,19 @@
 
 .clock {
     margin-left: 50%;
-}
+} */
 
 .logo {
-    margin-left: 50%;
+
     display: flex;
     font-size: 72px;
     font-weight: 600;
 }
-.logo-color{
+
+.logo-color {
     color: var(--theme-primary);
 }
-
+/* ریسپانسیو سازی */
 @media only screen and (max-width:1024px) {
 
     .sectionTwo-left__capshion,
@@ -117,10 +126,6 @@
     .sectionFuor-left__capshion,
     .sectionFive-left__capshion {
         width: 80%;
-    }
-
-    .orgFooter-rowTwo p {
-        width: 40%;
     }
 
     .One {
@@ -170,15 +175,6 @@
 
     }
 
-
-    .sectionTwo-left,
-    .sectionTree-left,
-    .sectionFuor-left,
-    .sectionFive-left {
-        width: 100%;
-        text-align: center !important;
-    }
-
     .line-bottom {
         width: 80% !important;
         margin: 0 auto;
@@ -192,19 +188,26 @@
         text-align: center;
     }
 
-    .orgFooter-rowTwo p {
-        width: 55%;
-    }
-}
-
-@media only screen and (max-width:425px) {
-    .orgFooter-rowTwo p {
+    .sectionTwo-right,
+    .sectionTree-right,
+    .sectionFuor-right,
+    .sectionFive-right,
+    .sectionTwo-left,
+    .sectionTree-left,
+    .sectionFive-left,
+    .sectionFuor-left,
+    .sectionTree-right,
+    .sectionFuor-right,
+    .sectionFive-right {
         width: 95%;
+        margin: 0 auto 2rem;
     }
-}
 
-@media only screen and (max-width:320px) {
-    footer {
-        height: 341px;
+    .sectionTwo,
+    .sectionTree,
+    .sectionFuor,
+    .sectionFive {
+
+        margin-right: 0;
     }
 }

@@ -1,3 +1,4 @@
+/* کد های مربوط به main */
 .main-conteyner {
     width: 95%;
     margin: 2rem auto;
@@ -71,6 +72,15 @@
 
 }
 
+/* ریسپانسیو سازی */
+@media only screen and (max-width:1024px) {
+
+    .main-conteyner__right,
+    .main-conteyner__left {
+        width: 35%;
+    }
+}
+
 @media only screen and (max-width:768px) {
     body {
         overflow-y: auto !important;
@@ -98,4 +108,6 @@
     .main-conteyner__right {
         width: 100%;
     }
+
+
 }
