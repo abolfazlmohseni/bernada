@@ -72,18 +72,31 @@
 }
 
 .opshionCon-maghta,
+.opshionCon-hour-item,
+.opshionCon-paye__item,
+.opshionCon-teshte__item,
+.opshionCon-start-item,
 .opshionCon-hour-item {
     transition: background ease 0.3s;
     height: 35px;
-
+    display: flex;
+    align-items: center;
 }
 
-.opshionCon-maghta:hover {
+.opshionCon-maghta:hover,
+.opshionCon-paye__item:hover,
+.opshionCon-teshte__item:hover,
+.opshionCon-start-item:hover,
+.opshionCon-hour-item:hover {
     background: var(--theme-primary);
     color: var(--white-color);
 }
 
-.opshionCon-maghta p {
+.opshionCon-maghta p,
+.opshionCon-paye__item p,
+.opshionCon-teshte__item p,
+.opshionCon-start-item p,
+.opshionCon-hour-item p {
     margin: 0px 0;
 }
 
@@ -151,6 +164,11 @@
 
 }
 
+.popup__meddel-item a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
 .popup__meddel-item p {
     margin: 0;
     margin-right: 5px;
@@ -198,6 +216,8 @@
     transform: rotate(180deg);
     transition: transform 0.3s ease;
 }
+
+
 /* ریسپانسیو سازی */
 @media only screen and (max-width:1024px) {
     .buildFrom {
