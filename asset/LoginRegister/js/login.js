@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const userInfo = {
-      numberPhone: userNumberPhone.value,
+      phone: userNumberPhone.value,
       password: userPass.value,
     };
 
     try {
-      const response = await fetch('https://bernada.ir/api/auth/login', {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
           button: "باشه",
         });
         localStorage.setItem('user', JSON.stringify(data.user));
-
-        window.location.href = "https://bernada.ir/overview";
+        window.location.href = "http://localhost:3000/overview";
       } else {
         swal("ناموفق", "رمز عبور یا شماره تلفن معتبر نیست لطفا دوباره تلاش کنید.", "error", {
           button: "باشه",

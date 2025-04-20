@@ -130,7 +130,7 @@ footer {
 }
 
 .footer-meddel {
-    width: 37.5%;
+    width: 33%;
 }
 
 .orgFooter {
@@ -169,7 +169,7 @@ footer {
 }
 
 .footer-left {
-    width: 37.5%;
+    width: 42%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

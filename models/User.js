@@ -1,24 +1,30 @@
-// مدل کاربر
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  username: {
+  name: { // قبلاً: username
     type: String,
     required: true,
-    unique: false
+    trim: true,
   },
-  numberPhone: {
+  phone: { // قبلاً: numberPhone
     type: String,
     required: true,
-    unique: true,  
+    unique: true,
+    trim: true,
+  },
+  email: { // جدید
+    type: String,
+    default: '',
+    trim: true,
   },
   password: {
     type: String,
     required: true,
-    unique: false
   },
-});
+  image: { // جدید
+    type: String,
+    default: '/imag/user6.jpg', // مسیر عکس پیش‌فرض
+  }
+}, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

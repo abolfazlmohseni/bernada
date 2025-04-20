@@ -1,7 +1,7 @@
 
 //اسکریپت منو
 const closemenu = document.querySelector(".closemenu")
-const menu = document.querySelector("menu")
+const menu = document.querySelector("menu-panel")
 closemenu.addEventListener("click", () => {
     menu.style.right = "-100%"
 })
@@ -12,4 +12,4 @@ openmenu.addEventListener("click", () => {
 // گرفتن و نمایش اسم کاربر از لوکال استورج
 let userinfo = JSON.parse(localStorage.getItem('user'))
 const showName = document.querySelector(".userName");
-showName.innerHTML = userinfo.username
+showName.innerHTML = userinfo.name

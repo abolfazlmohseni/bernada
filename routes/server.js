@@ -17,7 +17,8 @@ const taskRoutes = require("./task");
 app.use("/task", taskRoutes);
 const scheduleRoutes = require('./schedule');
 app.use('/api/schedule', scheduleRoutes);
-
+const userRoutes = require('./update');
+app.use('/api/user', userRoutes);
 const corsOptions = {
     origin: ["https://bernada.ir"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -28,6 +29,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '10mb', encoding: 'utf-8' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '..', 'asset')));
+app.use('uploads', express.static(path.join(__dirname, 'asset', 'uploads')));
 // ادرس فایل های استاتیک
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'landing', 'landing.html'));
@@ -65,8 +67,11 @@ app.get('/buildprogram', (req, res) => {
 app.get("/allPlan", (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'allPlan', 'allPlan.html'))
 });
+app.get('/profile', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'profile', 'profile.html'))
+})
 // اتصال به دیتابیس
-const mongoURI = process.env.DATABASE_URL || "mongodb://root:wx1lPKo3RwxMyYEGaTwXBw6f@dataplaner:27017/my-app?authSource=admin";
+const mongoURI = process.env.DATABASE_URL || "mongodb://root:Js4HOwnkM8jOvjBNjORmXWM3@logan.liara.cloud:33428/my-app?authSource=admin";
 mongoose.connect(mongoURI)
     .then(() => console.log(' Connected to MongoDB'))
     .catch((error) => console.error(' MongoDB connection error:', error));

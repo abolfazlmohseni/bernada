@@ -1,0 +1,131 @@
+.main-conteyner {
+    width: 95%;
+    margin: 2rem auto;
+    background: var(--box-bg);
+    box-shadow: 1px 1px 6px var(--box-shadow-color);
+    border-radius: 8px;
+    padding: 5px 10px;
+    max-height: 755px;
+    overflow-y: auto;
+}
+
+.sectionOne,
+.sectionTwo {
+    width: 97%;
+    margin: 1rem auto 0;
+}
+
+.sectionOne-titel {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.col-line {
+    height: 100%;
+    width: 5px;
+    border-radius: 8px;
+    background-color: var(--theme-primary);
+}
+
+.sectionOne-titel p {
+    margin: 0;
+    margin-right: 5px;
+}
+
+.sectionOne-meddel,
+.sectionTwo-meddel {}
+
+.sectionOne-meddel__row,
+.sectionTwo-meddel__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.row-item {
+    display: flex;
+    flex-direction: column;
+    width: 23%;
+}
+
+.input {
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    padding: 5px 6px;
+    transition: border ease 0.2s;
+}
+
+.input:focus {
+    border: 1px solid var(--theme-primary);
+}
+
+.sectionOne-bottom {
+    width: 80%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sectionOne-bottom__BTN {
+    border-radius: 8px;
+    padding: 8px 6px;
+    width: 23%;
+}
+
+.submit {
+    border: 1px solid var(--theme-primary);
+    background-color: transparent;
+    color: var(--theme-primary);
+    transition: all ease 0.3s;
+}
+
+.submit:hover {
+    /* border: none; */
+    background-color: var(--theme-primary);
+    color: var(--white-color);
+}
+
+.profile {
+    border: none;
+    background-color: var(--theme-primary);
+    color: var(--white-color);
+    transition: all ease 0.3s;
+    text-align: center;
+}
+#profile{
+    display: none;
+}
+.profile:hover {
+    border: 1px solid var(--theme-primary);
+    background-color: transparent;
+    color: var(--theme-primary);
+}
+
+.sectionTwo-meddel__rowTow {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: end;
+    margin: 1rem auto;
+}
+
+.sectionTwo-meddel__BTN {
+    border: 1px solid var(--theme-primary);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--theme-primary);
+    padding: 8px 6px;
+    width: 23%;
+    transition: all ease 0.3s;
+}
+
+.sectionTwo-meddel__BTN:hover {
+    background-color: var(--theme-primary);
+    color: var(--white-color);
+}

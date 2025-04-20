@@ -4,11 +4,11 @@ const User = require('../models/User');
 const router = express.Router();
 // ثبت‌نام کاربر جدید
 router.post('/register', async (req, res) => {
-  const { username, numberPhone, password } = req.body;
+  const { name, phone, password } = req.body;
 
   try {
  
-    const existingUser = await User.findOne({ numberPhone });
+    const existingUser = await User.findOne({ phone });
     if (existingUser) {
       
       return res.status(400).json({ message: 'کاربر با این شماره تلفن قبلاً ثبت‌نام کرده است.' });
@@ -17,8 +17,8 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
-      username,
-      numberPhone,
+      name,
+      phone,
       password: hashedPassword,
     });
 
@@ -27,8 +27,8 @@ router.post('/register', async (req, res) => {
     res.status(201).json({
       message: 'ثبت‌نام با موفقیت انجام شد.',
       user: {
-        username: newUser.username,
-        numberPhone: newUser.numberPhone,
+        name: newUser.name,
+        phone: newUser.phone,
       },
     });
   } catch (error) {
@@ -41,10 +41,10 @@ module.exports = router;
 
 // ورود کاربر
 router.post('/login', async (req, res) => {
-  const { numberPhone, password } = req.body;
+  const { phone, password } = req.body;
 
   try {
-    const user = await User.findOne({ numberPhone });
+    const user = await User.findOne({ phone });
     if (!user) return res.status(400).json({ message: 'User not found' });
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -54,8 +54,8 @@ router.post('/login', async (req, res) => {
     res.json({
       message: 'Login successful',
       user: {
-        username: user.username,
-        numberPhone: user.numberPhone,
+        name: user.name,
+        phone: user.phone,
         lastName: user.lastName,
       }
     });
