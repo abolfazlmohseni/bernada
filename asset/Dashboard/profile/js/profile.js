@@ -1,5 +1,6 @@
+const phone = JSON.parse(localStorage.getItem('user')).phone; // از لوکال استورج شماره تلفن رو می‌گیریم
+// دریافت اطلاعات کاربر از دیتابیس
 document.addEventListener('DOMContentLoaded', async () => {
-    const phone = JSON.parse(localStorage.getItem('user')).phone; // از لوکال استورج شماره تلفن رو می‌گیریم
     try {
         const response = await fetch(`http://localhost:3000/api/user/profile/${phone}`, {
             method: 'GET',
@@ -31,49 +32,149 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-
-
+// تغییر اطلاعات کاربر و اضافه کردن پروفایل
 document.querySelector('.submit').addEventListener('click', async () => {
     const nameInput = document.querySelectorAll('.input')[0];
     const phoneInput = document.querySelectorAll('.input')[1];
     const emailInput = document.querySelectorAll('.input')[2];
-    const profileInput = document.querySelector('#profile');
+
 
     const name = nameInput.value.trim();
-    const phone = phoneInput.value.trim(); // ریداونلیه ولی لازمه بفرستیم برای شناسایی کاربر
+    const phone = phoneInput.value.trim();
     const email = emailInput.value.trim();
-    const profilePic  = profileInput.files[0];
+    const profilePic = profileInput.files[0];
 
     const formData = new FormData();
     formData.append('name', name);
     formData.append('phone', phone);
     formData.append('email', email);
-    if (profilePic ) {
-        formData.append('profilePic', profilePic );
+    if (profilePic) {
+        formData.append('profilePic', profilePic);
     }
 
-    try {
-        const response = await fetch(`http://localhost:3000/api/user/profile/${phone}`, {
-            method: 'PUT',
-            body: formData
-        });
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', `http://localhost:3000/api/user/profile/${phone}`, true);
 
-        if (response.ok) {
-            const data = await response.json();
-            await swal("موفق آمیز", "ورود با موفعیت انجام شد", "success", {
+    // دایره و درصد
+    const radius = 35;
+    const circumference = 2 * Math.PI * radius;
+
+    const progressContainer = document.querySelector('.circle-progress');
+    const progressBar = document.querySelector('.progress-ring-bar');
+    const progressText = document.querySelector('.progress-text');
+    const submitButton = document.querySelector('.submit');
+    const popup = document.querySelector('.popup-upload');
+    // شروع کار
+    progressContainer.style.display = 'block';
+    progressBar.style.strokeDasharray = `${circumference}`;
+    progressBar.style.strokeDashoffset = `${circumference}`;
+    progressText.textContent = '0%';
+    popup.style.display = 'flex';
+    submitButton.disabled = true;
+    submitButton.textContent = 'در حال آپلود...';
+
+    // رویداد پیشرفت آپلود
+    xhr.upload.onprogress = function (event) {
+        if (event.lengthComputable) {
+            const percent = Math.round((event.loaded / event.total) * 100);
+            const offset = circumference - (percent / 100) * circumference;
+            progressBar.style.strokeDashoffset = offset;
+            progressText.textContent = `${percent}%`;
+        }
+    };
+
+    // پایان آپلود
+    xhr.onload = function () {
+        submitButton.disabled = false;
+        submitButton.textContent = 'ذخیره تغییرات';
+        progressBar.style.strokeDashoffset = '0';
+        progressText.textContent = '100%';
+
+        if (xhr.status === 200) {
+            popup.style.display = 'none';
+            const data = JSON.parse(xhr.responseText);
+            swal("موفق آمیز", "تغییرات ذخیره شد", "success", {
                 button: "باشه",
-              });
+            });
+
             localStorage.setItem('user', JSON.stringify(data.user));
-            location.reload(); // صفحه رو رفرش کن تا تغییرات نمایش داده بشه
+            location.reload();
         } else {
-            const errorData = await response.json();
+            const errorData = JSON.parse(xhr.responseText);
             swal("خطا!", errorData.message || "مشکلی پیش اومد", "error");
         }
-    } catch (err) {
-        console.error(err);
-        await swal("موفق آمیز", "ورود با موفعیت انجام شد", "success", {
-            button: "باشه",
-          });
+    };
+
+    // خطا
+    xhr.onerror = function () {
+        submitButton.disabled = false;
+        submitButton.textContent = 'ذخیره تغییرات';
+        swal("خطا!", "ارتباط با سرور برقرار نشد", "error");
+    };
+
+    // ارسال فرم
+    xhr.send(formData);
+
+
+})
+const profileInput = document.querySelector('#profile');
+const profileLabel = document.querySelector('label[for="profile"]');
+
+profileInput.addEventListener('change', () => {
+    if (profileInput.files.length > 0) {
+        profileLabel.textContent = profileInput.files[0].name;
+    } else {
+        profileLabel.textContent = 'اپلود پروفایل';
     }
 });
+// تغییر گذرواژه
 
+const changePassBTN = document.querySelector(".changePass")
+const currentPasswordInput = document.querySelector(".currentPassword")
+const newPasswordInput = document.querySelector(".newPassword")
+
+
+changePassBTN.addEventListener("click", async () => {
+
+    const data = {
+        currentPassword: currentPasswordInput.value,
+        newPassword: newPasswordInput.value
+    }
+    try {
+
+        const response = await fetch(`http://localhost:3000/api/user/change-password/${phone}`,
+            {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }
+        )
+        const result = await response.json()
+
+        if (response.ok) {
+            swal("موفق!", result.message || "رمز عبور با موفقیت تغییر کرد", "success");
+        } else {
+            swal("خطا!", result.message || "مشکلی پیش اومد", "error");
+        }
+
+    } catch (error) {
+        console.error(error);
+        swal("خطا!", "مشکلی در ارتباط با سرور پیش اومد", "error");
+    }
+})
+// اعتبارسنجی ورودی عکس پروفایل
+profileInput.addEventListener('change', () => {
+    const file = profileInput.files[0];
+
+    if (file) {
+        const maxSize = 2 * 1024 * 1024; // 2MB
+
+        if (!file.type.startsWith('image/')) {
+            swal("خطا", "فقط فایل‌های تصویری مجاز هستند!", "error");
+            profileInput.value = '';
+        } else if (file.size > maxSize) {
+            swal("خطا", "حجم عکس باید کمتر از ۲ مگابایت باشد!", "error");
+            profileInput.value = '';
+        }
+    }
+});

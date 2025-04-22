@@ -1,10 +1,10 @@
 // گرفتن شماره کاربر از لوکال استورج
-const phoneNumber = JSON.parse(localStorage.getItem('user')).numberPhone;
+const phone = JSON.parse(localStorage.getItem('user')).phone ||"";
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس
-const getUserSchedule = async (userphon) => {
+const getUserSchedule = async (phone) => {
     try {
-        const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
+        const response = await fetch(`http://localhost:3000/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("erorr")
         }
@@ -21,7 +21,7 @@ const getUserSchedule = async (userphon) => {
     }
 };
 
-getUserSchedule(phoneNumber);
+getUserSchedule(phone);
 
 const opartorashon = document.querySelector(".opartorashon");
 // گرفتن برنامه های عقب افتاده تا امروز
@@ -37,7 +37,6 @@ const getIncompleteSchedulesBeforeToday = (todayDay) => {
   
 
     return scheduleData.filter(entry => {
-        console.log('Checking entry:', entry);
         return previousDays.includes(entry.day) && entry.completed === false;
     });
 };

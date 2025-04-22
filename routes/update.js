@@ -4,12 +4,12 @@ const User = require('../models/User'); // مدل کاربر شما
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-
+const bcrypt = require('bcrypt');
 // تنظیمات multer برای آپلود عکس
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // مسیر صحیح پوشه داخل دایرکتوری asset
-    const dir = path.join(__dirname, '..', 'asset', 'uploads', 'profiles'); 
+    const dir = path.join(__dirname, '..', 'asset', 'uploads', 'profiles');
     // چک کردن اینکه مسیر ذخیره سازی وجود دارد یا نه
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true }); // ایجاد دایرکتوری در صورت عدم وجود
@@ -71,3 +71,34 @@ router.put('/profile/:phone', upload.single('profilePic'), async (req, res) => {
 });
 
 module.exports = router;
+
+
+
+
+router.put('/change-password/:phone', async (req, res) => {
+  const { phone } = req.params;
+  const { currentPassword, newPassword } = req.body;
+
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ message: 'لطفاً هر دو گذرواژه را وارد کنید.' });
+  }
+
+  try {
+    const user = await User.findOne({ phone });
+    if (!user) return res.status(404).json({ message: 'کاربری با این شماره یافت نشد.' });
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'گذرواژه فعلی اشتباه است.' });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    await user.save();
+
+    res.json({ message: 'گذرواژه با موفقیت تغییر یافت.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'خطای سرور' });
+  }
+});

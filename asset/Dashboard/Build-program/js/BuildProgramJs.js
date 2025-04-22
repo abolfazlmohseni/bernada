@@ -184,7 +184,6 @@ buildFromSubmit.addEventListener('click', async function () {
 
     // استفاده از شیء برای تعیین زمان
     let time = timeMap[selectedValues.hour];
-    console.log(time)
     // مپ کردن مقدار ورودی ساعت شروع به عدد صحیح
     const startMap = {
         "six": 6,
@@ -256,8 +255,6 @@ buildFromSubmit.addEventListener('click', async function () {
         });
     });
 
-    console.log(output);
-
     const getDayOfWeeks = () => {
         const daysOfWeek = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
         const today = new Date();
@@ -265,16 +262,15 @@ buildFromSubmit.addEventListener('click', async function () {
     };
 
     const scheduleInfo = {
-        userphon: JSON.parse(localStorage.getItem('user')).numberPhone,
+        phone: JSON.parse(localStorage.getItem('user')).phone,
         fieldOfStudy: selectedValues.teshte,
         educationLevel: selectedValues.maghta,
         schedule: output,
         currentDay: getDayOfWeeks(),
     };
-    console.log(scheduleInfo);
     // ارسال برنامه کاربر به دیتابیس
     try {
-        const response = await fetch('https://bernada.ir/api/schedule', {
+        const response = await fetch('http://localhost:3000/api/schedule', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -283,18 +279,18 @@ buildFromSubmit.addEventListener('click', async function () {
         });
         if (response.ok) {
             const result = await response.json();
-            await swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته شد`, "success", {
+            await swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقعیت ساخته شد`, "success", {
                 button: "باشه",
             });
-            window.location.href = "https://bernada.ir/allPlan";
+            window.location.href = "http://localhost:3000/allPlan";
         } else {
             const errorMessage = await response.text();
-            swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
+            swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
                 button: "باشه",
             });
         }
     } catch (error) {
-        swal("ساخت برنامه", `${userinfo.username} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
+        swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
             button: "باشه",
         });
     }

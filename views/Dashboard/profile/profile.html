@@ -44,12 +44,14 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="sectionOne-bottom">
                         <label for="profile" class="sectionOne-bottom__BTN profile">اپلود پروفایل</label>
-                        <input type="file" name="profile" id="profile">
+                        <input type="file" name="profile" id="profile" accept="image/*">
                         <button class="sectionOne-bottom__BTN submit">ذخیره تغییرات</button>
                     </div>
                 </div>
+
                 <div class="sectionTwo">
                     <div class="sectionOne-titel">
                         <div class="col-line"></div>
@@ -59,21 +61,35 @@
                         <div class="sectionTwo-meddel__row">
                             <div class="row-item">
                                 <label>گذرواژه فعلی</label>
-                                <input type="password" class="input">
+                                <input type="password" class="input currentPassword">
                             </div>
                             <div class="row-item">
                                 <label>گذرواژه جدید</label>
-                                <input type="password" class="input">
+                                <input type="password" class="input newPassword">
                             </div>
                         </div>
                         <div class="sectionTwo-meddel__rowTow">
-                            <button class="sectionTwo-meddel__BTN">تغییر گذرواژه</button>
+                            <button class="sectionTwo-meddel__BTN changePass">تغییر گذرواژه</button>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <div class="popup-upload">
+        <div class="circle-progress">
+            <svg class="progress-ring" width="80" height="80">
+              <circle class="progress-ring-bg" cx="40" cy="40" r="35" />
+              <circle class="progress-ring-bar" cx="40" cy="40" r="35" />
+            </svg>
+            <div class="progress-text">0%</div>
+          </div>
+          
+    </div>
+
+
+
     <thme-user></thme-user>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/components/theme/script/theme.js"></script>
@@ -85,5 +101,3 @@
 </body>
 
 </html>
-
-  

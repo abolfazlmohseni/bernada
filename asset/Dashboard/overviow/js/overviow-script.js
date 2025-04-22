@@ -1,11 +1,11 @@
 //گرفتن اطلاعات کاربر از لوکال استورج
-const phoneNumber = JSON.parse(localStorage.getItem('user')).numberPhone;
+const phone = JSON.parse(localStorage.getItem('user')).phone;
 const conteyner__right = document.querySelector(".conteyner__right-meddel");
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس
-const getUserSchedule = async (userphon) => {
+const getUserSchedule = async (phone) => {
     try {
-        const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
+        const response = await fetch(`http://localhost:3000/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("error")
         }
@@ -19,7 +19,7 @@ const getUserSchedule = async (userphon) => {
     }
 };
 
-getUserSchedule(phoneNumber);
+getUserSchedule(phone);
 // گرفتن برنامه‌های ناتمام برای یک روز
 const getIncompleteScheduleForDay = (day) => {
     return Array.isArray(scheduleData.schedule)
@@ -47,7 +47,8 @@ const showIncompleteScheduleForDay = (day) => {
                 }
             });
         } else {
-            conteyner__right.insertAdjacentHTML("beforeend", `<p>کاری نیستش!!</p>`);
+            conteyner__right.insertAdjacentHTML("beforeend", `<p>کار های امروز انجام شده<p>`);
+            conteyner__right.classList.add("null")
         }
     }
 
@@ -55,7 +56,9 @@ const showIncompleteScheduleForDay = (day) => {
     document.querySelectorAll(".right-meddel__items").forEach(item => {
         item.addEventListener("click", () => {
             const taskId = item.getAttribute("data-id");
-            task(taskId);
+            const icon = item.querySelector(".bi");
+
+            task(taskId, icon);
             item.querySelector(".bi").classList = "bi bi-check-square";
         });
     });
@@ -67,13 +70,16 @@ const getDayOfWeeks = () => {
     return daysOfWeek[today.getDay()];
 };
 // تغییر وضعیت یک تسک
-function task(id) {
-    fetch(`https://bernada.ir/task/update-status/${phoneNumber}/${id}`, {
+function task(taskId, iconElement) {
+
+    const isCompleted = iconElement.classList.contains("bi-check-square");
+
+    fetch(`http://localhost:3000/task/update-status/${phone}/${taskId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ completed: true }) // تغییر وضعیت به انجام‌شده
+        body: JSON.stringify({ completed: !isCompleted }) // وضعیت رو برعکس کن
     })
         .then(response => {
             if (!response.ok) {
@@ -82,18 +88,28 @@ function task(id) {
             return response.json();
         })
         .then(data => {
-            console.log("✅ تسک با موفقیت انجام شد:", data);
+            // تغییر آیکون
+            if (isCompleted) {
+                iconElement.classList.remove("bi-check-square");
+                iconElement.classList.add("bi-square");
+            } else {
+                iconElement.classList.remove("bi-square");
+                iconElement.classList.add("bi-check-square");
+            }
+
+
         })
         .catch(error => {
-            console.error("❌ خطا در ارسال درخواست:", error);
+            console.error("خطا در ارسال درخواست:", error);
         });
 }
+
 // نمایش برنامه‌های ناتمام برای یک روز
 let scheduleDatas = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس
-const getUserSchedulee = async (userphon) => {
+const getUserSchedulee = async (phone) => {
     try {
-        const response = await fetch(`https://bernada.ir/api/schedule/${userphon}`);
+        const response = await fetch(`http://localhost:3000/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("error")
         }
@@ -110,7 +126,7 @@ const getUserSchedulee = async (userphon) => {
     }
 };
 
-getUserSchedulee(phoneNumber);
+getUserSchedulee(phone);
 
 const conteyner__left = document.querySelector(".conteyner__left-meddel");
 
@@ -133,7 +149,7 @@ const showIncompleteSchedulesBeforeToday = (day) => {
     conteyner__left.innerHTML = "";
 
     if (previousSchedules.length > 0) {
-        conteyner__left.innerHTML = ""; 
+        conteyner__left.innerHTML = "";
         previousSchedules.forEach(activity => {
             conteyner__left.insertAdjacentHTML("beforeend", `
                 <div class="left-meddel__items" data-id="${activity._id}">
@@ -147,17 +163,19 @@ const showIncompleteSchedulesBeforeToday = (day) => {
         document.querySelectorAll(".left-meddel__items").forEach(item => {
             item.addEventListener("click", () => {
                 const taskId = item.getAttribute("data-id");
-                task(taskId);
+                const icon = item.querySelector(".bi");
 
-                let icon = item.querySelector(".bi");
+
                 if (icon) {
+                    task(taskId, icon);
                     icon.classList = "bi bi-check-square";
                 }
             });
         });
 
     } else {
-        conteyner__left.innerHTML = `<p>هیچ برنامه‌ای برای روزهای قبل از امروز وجود ندارد.</p>`;
+        conteyner__left.innerHTML = `<p>هیچ برنامه عقب افتاده ای نداری</p>`;
+        conteyner__left.classList.add("null")
     }
 
 };
@@ -172,7 +190,7 @@ const showIncompleteScheduleForDayi = (day) => {
     if (workDays.includes(day)) {
         const activities = getIncompleteScheduleForDayi(day);
         if (activities.length > 0) {
-            conteyner__right.innerHTML = ""; 
+            conteyner__right.innerHTML = "";
             activities.forEach(activity => {
                 conteyner__right.insertAdjacentHTML("beforeend", `
                     <div class="right-meddel__items" data-id="${activity._id}">
@@ -186,8 +204,8 @@ const showIncompleteScheduleForDayi = (day) => {
             document.querySelectorAll(".right-meddel__items").forEach(item => {
                 item.addEventListener("click", () => {
                     const taskId = item.getAttribute("data-id");
-                    task(taskId);
                     let icon = item.querySelector(".bi");
+                    task(taskId, icon);
                     icon.classList = "bi bi-check-square";
                 });
             });

@@ -13,28 +13,14 @@ class BuildMenu extends HTMLElement {
                     <i class="bi bi-x closemenu"></i>
                 </div>
             </div>
-
-            <div class="menu-item">
-                <a href="/overview">نمای کلی</a>
-            </div>
-            <div class="menu-item">
-                <a href="/today">کار های امروز</a>
-            </div>
-            <div class="menu-item">
-                <a href="delay">کار های به عقب افتاده</a>
-            </div>
-            <div class="menu-item">
-                <a href="/allPlan">کل برنامه</a>
-            </div>
-            <div class="menu-item">
-                <a href="/buildprogram">ساخت برنامه درسی</a>
-            </div>
-            <div class="menu-item">
-                <a href="/profile">پروفایل</a>
-            </div>
-            <div class="menu-item">
-                <a href="/">خروج</a>
-            </div>
+                <a href="/overview" class="menu-item">نمای کلی</a>        
+                <a href="/today" class="menu-item">کار های امروز</a>    
+                <a href="delay" class="menu-item">کار های به عقب افتاده</a>     
+                <a href="/allPlan" class="menu-item">کل برنامه</a>      
+                <a href="/buildprogram" class="menu-item">ساخت برنامه درسی</a>   
+                <a href="/profile" class="menu-item">پروفایل</a>
+                <a href="/" class="menu-item">خروج</a>
+        
         </menu>
         `
 

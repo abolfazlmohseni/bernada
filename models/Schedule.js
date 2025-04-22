@@ -11,7 +11,7 @@ const taskSchema = new mongoose.Schema({
 });
 
 const scheduleSchema = new mongoose.Schema({
-  userphon: {
+  phone: {
     type: String,
     required: true
   },

@@ -3,12 +3,12 @@ const router = express.Router();
 const Schedule = require("../models/Schedule");
 
 //  تغییر وضعیت یک تسک خاص در برنامه درسی
-router.put("/update-status/:userphon/:taskId", async (req, res) => {
+router.put("/update-status/:phone/:taskId", async (req, res) => {
   try {
-    const { userphon, taskId } = req.params;
+    const { phone, taskId } = req.params;
     const { completed } = req.body; 
   
-    const schedule = await Schedule.findOne({ userphon });
+    const schedule = await Schedule.findOne({ phone });
 
     if (!schedule) {
       return res.status(404).json({ message: "برنامه درسی یافت نشد!" });

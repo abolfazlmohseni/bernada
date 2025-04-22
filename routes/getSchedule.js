@@ -3,15 +3,15 @@ const Schedule = require('../models/Schedule');
 const User = require('../models/User'); 
 const router = express.Router();
 // ارسال برنامه هفتگی کاربر
-router.get('/schedule/:userphon', async (req, res) => {
-    const { userphon } = req.params;
+router.get('/schedule/:phone', async (req, res) => {
+    const { phone } = req.params;
     try {
-        const user = await User.findOne({ numberPhone: userphon });
+        const user = await User.findOne({ phone: phone });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        const userSchedule = await Schedule.findOne({ userphon: userphon }).sort({ _id: -1 });
+        const userSchedule = await Schedule.findOne({ phone: phone }).sort({ _id: -1 });
 
         if (!userSchedule) {
             return res.status(404).json({ message: "Schedule not found", schedule: [] });
@@ -21,8 +21,8 @@ router.get('/schedule/:userphon', async (req, res) => {
             message: 'Schedule retrieved successfully',
             schedule: userSchedule.schedule || [],  
             user: {
-                username: user.username,
-                numberPhone: user.numberPhone,
+                name: user.name,
+                phone: user.phone,
                 lastName: user.lastName
             }
         });
