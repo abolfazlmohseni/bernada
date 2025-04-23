@@ -28,7 +28,7 @@ document.querySelector(".sendBTN").addEventListener("click", function (event) {
             name.value = ''
             phone.value = ''
             message.value = ''
-            errText.innerHTML = "پیام شما با موفقعیت ارسال شد"
+            errText.innerHTML = "پیام شما با موفقیت ارسال شد"
             errText.style.color = "#008000"
             errText.style.display = "block"
         }, function (error) {

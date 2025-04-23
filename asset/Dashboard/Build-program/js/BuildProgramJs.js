@@ -270,7 +270,7 @@ buildFromSubmit.addEventListener('click', async function () {
     };
     // ارسال برنامه کاربر به دیتابیس
     try {
-        const response = await fetch('http://localhost:3000/api/schedule', {
+        const response = await fetch('https://bernada.ir/api/schedule', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -279,18 +279,20 @@ buildFromSubmit.addEventListener('click', async function () {
         });
         if (response.ok) {
             const result = await response.json();
-            await swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقعیت ساخته شد`, "success", {
+            console.log(output)
+            console.log(selectedValues)
+            await swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقیت ساخته شد`, "success", {
                 button: "باشه",
             });
-            window.location.href = "http://localhost:3000/allPlan";
+            window.location.href = "https://bernada.ir/allPlan";
         } else {
             const errorMessage = await response.text();
-            swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
+            swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقیت ساخته نشد دوباره تلاش کن`, "error", {
                 button: "باشه",
             });
         }
     } catch (error) {
-        swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقعیت ساخته نشد دوباره تلاش کن`, "error", {
+        swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقیت ساخته نشد دوباره تلاش کن`, "error", {
             button: "باشه",
         });
     }

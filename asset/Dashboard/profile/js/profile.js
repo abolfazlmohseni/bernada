@@ -2,7 +2,7 @@ const phone = JSON.parse(localStorage.getItem('user')).phone; // از لوکال
 // دریافت اطلاعات کاربر از دیتابیس
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch(`http://localhost:3000/api/user/profile/${phone}`, {
+        const response = await fetch(`https://bernada.ir/api/user/profile/${phone}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,14 +20,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // نمایش عکس پروفایل (اگر موجود باشه)
             if (image && image !== '/imag/user6.jpg') {
-                document.querySelector('#profilePreview').src = `http://localhost:3000/${image}`;
+                document.querySelector('#profilePreview').src = `https://bernada.ir/${image}`;
             }
         } else {
             swal("خطا!", "مشکلی در دریافت پروفایل پیش آمد.", "error");
         }
     } catch (err) {
         console.log(err);
-        swal("خطا!", "خطای شبکه یا سرور.", "error");
+        await swal("خطا!", "خطای شبکه یا سرور.", "error");
+        window.location.href = "https://bernada.ir"
     }
 });
 
@@ -44,16 +45,23 @@ document.querySelector('.submit').addEventListener('click', async () => {
     const email = emailInput.value.trim();
     const profilePic = profileInput.files[0];
 
+
+    function checkEmail(email) {
+        
+    }
+
+
+
     const formData = new FormData();
     formData.append('name', name);
     formData.append('phone', phone);
-    formData.append('email', email);
+    formData.append('email', checkEmail(email));
     if (profilePic) {
         formData.append('profilePic', profilePic);
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open('PUT', `http://localhost:3000/api/user/profile/${phone}`, true);
+    xhr.open('PUT', `https://bernada.ir/api/user/profile/${phone}`, true);
 
     // دایره و درصد
     const radius = 35;
@@ -64,7 +72,6 @@ document.querySelector('.submit').addEventListener('click', async () => {
     const progressText = document.querySelector('.progress-text');
     const submitButton = document.querySelector('.submit');
     const popup = document.querySelector('.popup-upload');
-    // شروع کار
     progressContainer.style.display = 'block';
     progressBar.style.strokeDasharray = `${circumference}`;
     progressBar.style.strokeDashoffset = `${circumference}`;
@@ -73,7 +80,6 @@ document.querySelector('.submit').addEventListener('click', async () => {
     submitButton.disabled = true;
     submitButton.textContent = 'در حال آپلود...';
 
-    // رویداد پیشرفت آپلود
     xhr.upload.onprogress = function (event) {
         if (event.lengthComputable) {
             const percent = Math.round((event.loaded / event.total) * 100);
@@ -83,7 +89,6 @@ document.querySelector('.submit').addEventListener('click', async () => {
         }
     };
 
-    // پایان آپلود
     xhr.onload = function () {
         submitButton.disabled = false;
         submitButton.textContent = 'ذخیره تغییرات';
@@ -142,7 +147,7 @@ changePassBTN.addEventListener("click", async () => {
     }
     try {
 
-        const response = await fetch(`http://localhost:3000/api/user/change-password/${phone}`,
+        const response = await fetch(`https://bernada.ir/api/user/change-password/${phone}`,
             {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
