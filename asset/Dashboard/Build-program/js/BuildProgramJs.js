@@ -149,7 +149,7 @@ buildFromSubmit.addEventListener('click', async function () {
             barnameuser = studyPlan.rahnamayi.sixH;
         }
     } else if (selectedValues.maghta === 'motevaseteTwo') {
-        if (selectedValues.reshte === 'انسانی') {
+        if (selectedValues.teshte === 'انسانی') {
             if (selectedValues.hour === 'two') {
                 barnameuser = studyPlan.motevaseteTwo.ensani.twoH;
             } else if (selectedValues.hour === 'four') {
@@ -157,7 +157,7 @@ buildFromSubmit.addEventListener('click', async function () {
             } else {
                 barnameuser = studyPlan.motevaseteTwo.ensani.sixH;
             }
-        } else if (selectedValues.reshte === 'ریاضی') {
+        } else if (selectedValues.teshte === 'ریاضی') {
             if (selectedValues.hour === 'two') {
                 barnameuser = studyPlan.motevaseteTwo.riyazi.twoH;
             } else if (selectedValues.hour === 'four') {
@@ -268,9 +268,12 @@ buildFromSubmit.addEventListener('click', async function () {
         schedule: output,
         currentDay: getDayOfWeeks(),
     };
+    console.log(output)
+    console.log(selectedValues)
+    console.log(scheduleInfo)
     // ارسال برنامه کاربر به دیتابیس
     try {
-        const response = await fetch('https://bernada.ir/api/schedule', {
+        const response = await fetch('http://localhost:3000/api/schedule', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -279,12 +282,11 @@ buildFromSubmit.addEventListener('click', async function () {
         });
         if (response.ok) {
             const result = await response.json();
-            console.log(output)
-            console.log(selectedValues)
+
             await swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقیت ساخته شد`, "success", {
                 button: "باشه",
             });
-            window.location.href = "https://bernada.ir/allPlan";
+            window.location.href = "http://localhost:3000/allPlan";
         } else {
             const errorMessage = await response.text();
             swal("ساخت برنامه", `${userinfo.name} برنامه درسی تو با موفقیت ساخته نشد دوباره تلاش کن`, "error", {

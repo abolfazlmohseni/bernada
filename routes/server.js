@@ -71,7 +71,7 @@ app.get('/profile', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'profile', 'profile.html'))
 })
 // اتصال به دیتابیس
-const mongoURI = process.env.DATABASE_URL || "mongodb://root:V4StxJKlbDzw2OcwJ9pixhlk@dataplaner:27017/my-app?authSource=admin";
+const mongoURI = process.env.DATABASE_URL || "mongodb://root:V4StxJKlbDzw2OcwJ9pixhlk@fitz-roy.liara.cloud:33687/my-app?authSource=admin";
 mongoose.connect(mongoURI)
     .then(() => console.log(' Connected to MongoDB'))
     .catch((error) => console.error(' MongoDB connection error:', error));
