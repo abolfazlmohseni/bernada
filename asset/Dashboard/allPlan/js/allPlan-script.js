@@ -1,5 +1,9 @@
 // دریافت شماره تلفن کاربر از Local Storage و بررسی وجود آن
-const phone = JSON.parse(localStorage.getItem('user'))?.phone || "";
+const phone = JSON.parse(localStorage.getItem('user'))?.phone || logut();
+async function logut() {
+    swal("خطا!", "ابتدا وارد شوید", "error");
+    window.location.href = "https://bernada.ir";
+}
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از سرور
 const getUserSchedule = async (phone) => {

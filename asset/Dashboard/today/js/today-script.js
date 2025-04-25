@@ -1,5 +1,9 @@
 //گرفتن شماره تلفن کاربر از لوکال استورج
-const phone = JSON.parse(localStorage.getItem('user'))?.phone || "";
+const phone = JSON.parse(localStorage.getItem('user'))?.phone || logut();
+async function logut() {
+    swal("خطا!", "ابتدا وارد شوید", "error");
+    window.location.href = "https://bernada.ir";
+}
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس
 const getUserSchedule = async (phone) => {
@@ -29,7 +33,7 @@ const tabel = document.querySelector("table");
 const bikari = document.querySelector(".bikari");
 
 const getIncompleteScheduleForDay = (day) => {
-    return Array.isArray(scheduleData.schedule) 
+    return Array.isArray(scheduleData.schedule)
         ? scheduleData.schedule.filter(entry => entry.day === day && entry.completed === false)
         : [];
 };

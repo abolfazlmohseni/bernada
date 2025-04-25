@@ -1,5 +1,9 @@
 //گرفتن اطلاعات کاربر از لوکال استورج
-const phone = JSON.parse(localStorage.getItem('user')).phone;
+const phone = JSON.parse(localStorage.getItem('user')).phone || logut();
+async function logut() {
+    swal("خطا!", "ابتدا وارد شوید", "error");
+    window.location.href = "https://bernada.ir";
+}
 const conteyner__right = document.querySelector(".conteyner__right-meddel");
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس

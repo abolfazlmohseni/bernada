@@ -1,4 +1,8 @@
-const phone = JSON.parse(localStorage.getItem('user')).phone; // از لوکال استورج شماره تلفن رو می‌گیریم
+const phone = JSON.parse(localStorage.getItem('user')).phone || logut();
+async function logut() {
+    swal("خطا!", "ابتدا وارد شوید", "error");
+    window.location.href = "https://bernada.ir";
+}; 
 // دریافت اطلاعات کاربر از دیتابیس
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -45,17 +49,23 @@ document.querySelector('.submit').addEventListener('click', async () => {
     const email = emailInput.value.trim();
     const profilePic = profileInput.files[0];
 
-
     function checkEmail(email) {
-        
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
     }
-
-
+    let chekedEmail = "وارد نشده است";
+    if (checkEmail(email)) {
+        chekedEmail = email;
+    } else {
+        chekedEmail = "وارد نشده است";
+        swal("خطا!", "ایمیل نامعتبر است", "error");
+    }
 
     const formData = new FormData();
     formData.append('name', name);
     formData.append('phone', phone);
-    formData.append('email', checkEmail(email));
+    formData.append('email', chekedEmail);
+    console.log(formData.get('email'));
     if (profilePic) {
         formData.append('profilePic', profilePic);
     }
