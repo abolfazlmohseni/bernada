@@ -10,7 +10,7 @@ let scheduleData = { schedule: [] };
 // گرفتن برنامه کاربر از دیتابیس
 const getUserSchedule = async (phone) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/schedule/${phone}`);
+        const response = await fetch(`https://bernada.ir/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("error");
         }

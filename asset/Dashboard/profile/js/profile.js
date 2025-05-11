@@ -6,7 +6,7 @@ async function logut() {
 // دریافت اطلاعات کاربر از دیتابیس
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch(`http://localhost:3000/api/user/profile/${phone}`, {
+        const response = await fetch(`https://bernada.ir/api/user/profile/${phone}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // نمایش عکس پروفایل (اگر موجود باشه)
             if (image && image !== '/imag/user6.jpg') {
-                document.querySelector('#profilePreview').src = `http://localhost:3000/${image}`;
+                document.querySelector('#profilePreview').src = `https://bernada.ir/${image}`;
             }
         } else {
             swal("خطا!", "مشکلی در دریافت پروفایل پیش آمد.", "error");
@@ -71,7 +71,7 @@ document.querySelector('.submit').addEventListener('click', async () => {
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open('PUT', `http://localhost:3000/api/user/profile/${phone}`, true);
+    xhr.open('PUT', `https://bernada.ir/api/user/profile/${phone}`, true);
 
     // دایره و درصد
     const radius = 35;
@@ -157,7 +157,7 @@ changePassBTN.addEventListener("click", async () => {
     }
     try {
 
-        const response = await fetch(`http://localhost:3000/api/user/change-password/${phone}`,
+        const response = await fetch(`https://bernada.ir/api/user/change-password/${phone}`,
             {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
