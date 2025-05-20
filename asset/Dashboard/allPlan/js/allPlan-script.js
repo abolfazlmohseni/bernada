@@ -1,9 +1,16 @@
 // دریافت شماره تلفن کاربر از Local Storage و بررسی وجود آن
 const phone = JSON.parse(localStorage.getItem('user'))?.phone || logut();
+
 async function logut() {
     swal("خطا!", "ابتدا وارد شوید", "error");
     window.location.href = "https://bernada.ir";
 }
+// انتخاب عناصر مورد استفاده
+const opartorashon = document.querySelector(".opartorashon");
+const tabel = document.querySelector("table");
+const bikari = document.querySelector(".bikari");
+
+
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از سرور
 const getUserSchedule = async (phone) => {
@@ -19,6 +26,8 @@ const getUserSchedule = async (phone) => {
         showSchedule(); // نمایش کل برنامه
     } catch (error) {
         console.error("Error:", error);
+        tabel.style.display = "none";
+        bikari.style.display = "block";
     }
 };
 // بررسی شماره تلفن و در صورت معتبر بودن، دریافت برنامه کاربر
@@ -27,10 +36,8 @@ if (phone) {
 } else {
     console.error("شماره تلفن نامعتبر است.");
 }
-// انتخاب عناصر مورد استفاده
-const opartorashon = document.querySelector(".opartorashon");
-const tabel = document.querySelector("table");
-const bikari = document.querySelector(".bikari");
+
+
 // نمایش برنامه در جدول
 const showSchedule = () => {
     opartorashon.innerHTML = "";

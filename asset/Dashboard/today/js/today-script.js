@@ -4,13 +4,22 @@ async function logut() {
     swal("خطا!", "ابتدا وارد شوید", "error");
     window.location.href = "https://bernada.ir";
 }
+// انتخاب عناصر مورد استفاده
+const opartorashon = document.querySelector(".opartorashon");
+const tabel = document.querySelector("table");
+const bikari = document.querySelector(".bikari");
+
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس
 const getUserSchedule = async (phone) => {
     try {
         const response = await fetch(`https://bernada.ir/api/schedule/${phone}`);
         if (!response.ok) {
-            throw new Error("Error fetching schedule");
+            opartorashon.insertAdjacentHTML("beforeend", ` 
+                <tr>
+                     <td colspan="4">هنوز برنامه ای نساختی</td>
+                </tr>
+                `)
         }
         const data = await response.json();
 
@@ -27,10 +36,6 @@ if (phone) {
 } else {
     console.error("شماره تلفن نامعتبر است.");
 }
-// انتخاب عناصر مورد استفاده
-const opartorashon = document.querySelector(".opartorashon");
-const tabel = document.querySelector("table");
-const bikari = document.querySelector(".bikari");
 
 const getIncompleteScheduleForDay = (day) => {
     return Array.isArray(scheduleData.schedule)
@@ -59,8 +64,6 @@ const showIncompleteScheduleForDay = (day) => {
                 `);
             });
         } else {
-            tabel.style.display = "none";
-            bikari.style.display = "block";
         }
     } else {
         tabel.style.display = "none";

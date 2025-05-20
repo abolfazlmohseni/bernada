@@ -2,7 +2,7 @@ const phone = JSON.parse(localStorage.getItem('user')).phone || logut();
 async function logut() {
     swal("خطا!", "ابتدا وارد شوید", "error");
     window.location.href = "https://bernada.ir";
-}; 
+};
 // دریافت اطلاعات کاربر از دیتابیس
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const { name, phone, email, image } = user;
 
             // نمایش اطلاعات کاربر در فرم
-            document.querySelectorAll('.input')[0].value = name; // نمایش نام
-            document.querySelectorAll('.input')[1].value = phone; // نمایش شماره تلفن
-            document.querySelectorAll('.input')[2].value = email; // نمایش ایمیل
+            document.querySelector('.name').value = name; // نمایش نام
+            document.querySelector('.numberPhone').value = phone; // نمایش شماره تلفن
+            document.querySelector('.email').value = email == undefined ? null : email; // نمایش ایمیل
 
             // نمایش عکس پروفایل (اگر موجود باشه)
             if (image && image !== '/imag/user6.jpg') {
@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // تغییر اطلاعات کاربر و اضافه کردن پروفایل
 document.querySelector('.submit').addEventListener('click', async () => {
-    const nameInput = document.querySelectorAll('.input')[0];
-    const phoneInput = document.querySelectorAll('.input')[1];
-    const emailInput = document.querySelectorAll('.input')[2];
+    const nameInput = document.querySelector('.name');
+    const phoneInput = document.querySelector('.numberPhone');
+    const emailInput = document.querySelector('.email');
 
 
     const name = nameInput.value.trim();
@@ -57,8 +57,7 @@ document.querySelector('.submit').addEventListener('click', async () => {
     if (checkEmail(email)) {
         chekedEmail = email;
     } else {
-        chekedEmail = "وارد نشده است";
-        swal("خطا!", "ایمیل نامعتبر است", "error");
+        chekedEmail = null;
     }
 
     const formData = new FormData();

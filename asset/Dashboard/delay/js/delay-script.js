@@ -5,6 +5,8 @@ async function logut() {
     window.location.href = "https://bernada.ir";
 }
 
+const opartorashon = document.querySelector(".opartorashon");
+
 let scheduleData = { schedule: [] };
 
 // گرفتن برنامه کاربر از دیتابیس
@@ -13,6 +15,11 @@ const getUserSchedule = async (phone) => {
         const response = await fetch(`https://bernada.ir/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("error");
+            opartorashon.insertAdjacentHTML("beforeend", ` 
+                <tr>
+                     <td colspan="4">هنوز برنامه ای نساختی</td>
+                </tr>
+                `)
         }
         const data = await response.json();
 
@@ -25,6 +32,7 @@ const getUserSchedule = async (phone) => {
         }
     } catch (error) {
         console.error("Error:", error);
+
     }
 };
 
@@ -99,7 +107,6 @@ function generateFridaySchedule(schedule, todayDay) {
 
     // نمایش یا ذخیره برنامه جمعه
     console.log("برنامه روز جمعه:", fridayTasks);
-    const opartorashon = document.querySelector(".opartorashon");
     if (fridayTasks.length != 0) {
         fridayTasks.forEach(task => {
             opartorashon.insertAdjacentHTML("beforeend", `
@@ -118,8 +125,6 @@ function generateFridaySchedule(schedule, todayDay) {
             </tr>
         `);
     }
-
-
 }
 
 

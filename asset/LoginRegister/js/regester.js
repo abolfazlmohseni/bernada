@@ -2,7 +2,7 @@
 let $ = document;
 const formRegister = $.querySelector("form");
 const userName = $.querySelector(".userName");
-const userLastName = $.querySelector(".userLastName");
+// const userLastName = $.querySelector(".userLastName");
 const userNumberPhone = $.querySelector(".userNumberPhone");
 const userPass = $.querySelector(".userPass");
 const errtextNumberPhone = $.querySelector(".errtextNumberPhone");
@@ -95,11 +95,11 @@ formRegister.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const username = checkValueName(userName.value);
-  const lastName = checkValueLastname(userLastName.value);
+  // const lastName = checkValueLastname(userLastName.value);
   const numberPhone = Confirmationnumber(userNumberPhone.value);
   const password = validatePassword(userPass.value);
 
-  if (username && lastName && numberPhone && password) {
+  if (username && numberPhone && password) {
     const userInfo = {
       name: username,
       phone: numberPhone,
@@ -120,7 +120,7 @@ formRegister.addEventListener("submit", async (event) => {
 
       if (response.ok) {
         userName.value = '';
-        userLastName.value = '';
+        // userLastName.value = '';
         userPass.value = '';
         userNumberPhone.value = '';
         await swal("موفق", data.message, "success", {

@@ -14,7 +14,7 @@ body {
 
 .regesterForm {
     width: 500px;
-    height: 570px;
+    height: 510px;
     background: var(--box-bg);
     border-radius: 8px;
     padding: 10px;
@@ -29,7 +29,7 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    height: 450px;
+    height: 410px;
     justify-content: space-around;
     align-items: center;
 }
