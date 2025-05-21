@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schedule = require('../models/Schedule');
 const agenda = new Agenda({
     db: {
-        address: 'mongodb://root:V4StxJKlbDzw2OcwJ9pixhlk@fitz-roy.liara.cloud:33687/my-app?authSource=admin',
+        address: 'mongodb://mongo:pXfPDrAmEjYpgqLTXNNLkarMypHdRLID@mainline.proxy.rlwy.net:18289',
         collection: 'schedules'
     }
 });
