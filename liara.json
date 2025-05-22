@@ -1,7 +1,7 @@
 {
     "platform": "node",
     "port": 3000,
-    "app":"planer",
+    "app":"bernada",
     "nodeVersion": "22",
     "startCommand": "node routes/server.js"
   }
