@@ -25,38 +25,6 @@ const corsOptions = {
     credentials: true
 };
 
-const { client, updateUserCount, recordRequest } = require('./metrics');
-// ثبت ترافیک و درخواست‌ها
-app.use((req, res, next) => {
-    recordRequest(req, res);
-    next();
-});
-
-// مسیر متریک‌ها برای Prometheus
-app.get('/metrics', async (req, res) => {
-    res.set('Content-Type', client.register.contentType);
-    res.end(await client.register.metrics());
-});
-
-// به‌روزرسانی تعداد یوزرها هر 10 ثانیه
-setInterval(async () => {
-    await updateUserCount(async () => {
-        // این تابع باید تعداد یوزرهای دیتابیس رو برگردونه
-        // مثلا return await User.countDocuments();
-        return 123; // موقت
-    });
-}, 10000);
-
-// بقیه API‌ها...
-app.listen(3000, () => console.log('Server on port 3000'));
-
-
-
-
-
-
-
-
 app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '10mb', encoding: 'utf-8' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
@@ -103,14 +71,14 @@ app.get('/profile', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'profile', 'profile.html'))
 })
 // اتصال به دیتابیس
-const mongoURI = process.env.DATABASE_URL || "mongodb://root:ybYPIPQS0ox5jp5CM5ZPbqzM@bernadadata:27017/my-app?authSource=admin";
+const mongoURI = process.env.DATABASE_URL || "mongodb://root:ybYPIPQS0ox5jp5CM5ZPbqzM@sabalan.liara.cloud:33358/my-app?authSource=admin";
 mongoose.connect(mongoURI)
     .then(() => console.log(' Connected to MongoDB'))
     .catch((error) => console.error(' MongoDB connection error:', error));
 // ایجاد روت
 app.use('/api/auth', authRoutes);
 // اجرای سرور
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(` Server running on port ${PORT}`);

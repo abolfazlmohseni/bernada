@@ -9,23 +9,33 @@
 
 <url>
   <loc>https://bernada.ir/</loc>
-  <lastmod>2025-03-23T16:20:21+00:00</lastmod>
+  <lastmod>2025-04-20T13:13:53+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://bernada.ir/aboutMe</loc>
-  <lastmod>2025-03-23T16:28:53+00:00</lastmod>
+  <lastmod>2025-05-11T13:58:48+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bernada.ir/link/</loc>
-  <lastmod>2025-03-23T16:20:42+00:00</lastmod>
+  <lastmod>2025-05-11T13:58:48+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bernada.ir/guide/</loc>
-  <lastmod>2025-03-23T16:20:29+00:00</lastmod>
+  <lastmod>2025-05-11T13:58:48+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bernada.ir/register</loc>
+  <lastmod>2025-05-25T19:57:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bernada.ir/login</loc>
+  <lastmod>2025-05-25T19:57:40+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
