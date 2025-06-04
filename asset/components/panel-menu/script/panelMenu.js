@@ -15,7 +15,7 @@ class BuildMenu extends HTMLElement {
             </div>
                 <a href="/overview" class="menu-item">نمای کلی</a>        
                 <a href="/today" class="menu-item">کار های امروز</a>    
-                <a href="delay" class="menu-item">کار های به عقب افتاده</a>     
+                <a href="/delay" class="menu-item">کار های به عقب افتاده</a>     
                 <a href="/allPlan" class="menu-item">کل برنامه</a>      
                 <a href="/buildprogram" class="menu-item">ساخت برنامه درسی</a>   
                 <a href="/profile" class="menu-item">پروفایل</a>
