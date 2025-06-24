@@ -1,6 +1,5 @@
 import { studyPlan } from './ModulePlan.js' // ایمپورت داده‌های مربوط به برنامه درسی
 let $ = document;
-const dropdowns = document.querySelectorAll(".buildFrom > div");
 // آبجکت برای ذخیره مقادیر انتخاب شده توسط کاربر
 let selectedValues = {
     maghta: null,
@@ -17,6 +16,7 @@ const payeData = {
 const teshteData = {
     motevaseteTwo: ["ریاضی", "تجربی", "انسانی"]
 };
+const dropdowns = document.querySelectorAll(".buildFrom > div");
 dropdowns.forEach(dropdown => {
     const selectBox = dropdown.querySelector("div[class^='select']");
     const optionsContainer = dropdown.querySelector("div[class^='opshionCon']");
