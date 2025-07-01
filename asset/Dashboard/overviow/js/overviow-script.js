@@ -2,14 +2,14 @@
 const phone = JSON.parse(localStorage.getItem('user')).phone || logut();
 async function logut() {
     swal("خطا!", "ابتدا وارد شوید", "error");
-    window.location.href = "https://bernada.ir";
+    window.location.href = "http://localhost:3000";
 }
 const conteyner__right = document.querySelector(".conteyner__right-meddel");
 let scheduleData = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس
 const getUserSchedule = async (phone) => {
     try {
-        const response = await fetch(`https://bernada.ir/api/schedule/${phone}`);
+        const response = await fetch(`http://localhost:3000/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("error")
         }
@@ -78,7 +78,7 @@ function task(taskId, iconElement) {
 
     const isCompleted = iconElement.classList.contains("bi-check-square");
 
-    fetch(`https://bernada.ir/task/update-status/${phone}/${taskId}`, {
+    fetch(`http://localhost:3000/task/update-status/${phone}/${taskId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ let scheduleDatas = { schedule: [] };
 // دریافت برنامه کاربر از دیتابیس
 const getUserSchedulee = async (phone) => {
     try {
-        const response = await fetch(`https://bernada.ir/api/schedule/${phone}`);
+        const response = await fetch(`http://localhost:3000/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("error")
         }

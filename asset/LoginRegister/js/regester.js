@@ -108,7 +108,7 @@ formRegister.addEventListener("submit", async (event) => {
 
     try {
      
-      const response = await fetch('https://bernada.ir/api/auth/register', {
+      const response = await fetch('http://localhost:3000/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ formRegister.addEventListener("submit", async (event) => {
         await swal("موفق", data.message, "success", {
           button: "باشه",
         });
-        window.location.href = "https://bernada.ir/login";
+        window.location.href = "http://localhost:3000/login";
       } else {
         swal("ناموفق", data.message || "ثبت نام با مشکل مواجه شد لطفاً دوباره تلاش کنید.", "error", {
           button: "باشه",

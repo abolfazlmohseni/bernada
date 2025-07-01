@@ -2,7 +2,7 @@
 const phone = JSON.parse(localStorage.getItem('user')).phone || logut();
 async function logut() {
     swal("خطا!", "ابتدا وارد شوید", "error");
-    window.location.href = "https://bernada.ir";
+    window.location.href = "http://localhost:3000";
 }
 
 const opartorashon = document.querySelector(".opartorashon");
@@ -12,7 +12,7 @@ let scheduleData = { schedule: [] };
 // گرفتن برنامه کاربر از دیتابیس
 const getUserSchedule = async (phone) => {
     try {
-        const response = await fetch(`https://bernada.ir/api/schedule/${phone}`);
+        const response = await fetch(`http://localhost:3000/api/schedule/${phone}`);
         if (!response.ok) {
             console.log("error");
             opartorashon.insertAdjacentHTML("beforeend", ` 

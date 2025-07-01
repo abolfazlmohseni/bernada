@@ -20,7 +20,7 @@ app.use('/api/schedule', scheduleRoutes);
 const userRoutes = require('./update');
 app.use('/api/user', userRoutes);
 const corsOptions = {
-    origin: ["https://bernada.ir"],
+    origin: ["http://localhost:3000"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true
 };
@@ -70,16 +70,26 @@ app.get("/allPlan", (req, res) => {
 app.get('/profile', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'Dashboard', 'profile', 'profile.html'))
 })
-// اتصال به دیتابیس
-const mongoURI = process.env.DATABASE_URL || "mongodb://root:ybYPIPQS0ox5jp5CM5ZPbqzM@sabalan.liara.cloud:33358/my-app?authSource=admin";
-mongoose.connect(mongoURI)
-    .then(() => console.log(' Connected to MongoDB'))
-    .catch((error) => console.error(' MongoDB connection error:', error));
+
 // ایجاد روت
 app.use('/api/auth', authRoutes);
+
+// اتصال به دیتابیس
+async function connectToMongo() {
+    try {
+        await mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://abolfazl:12135811228@cluster0.ppfdw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("✅ Connected to MongoDB");
+    } catch (err) {
+        console.error("❌ Could not connect to MongoDB. Continuing without DB...");
+        // اینجا هم کاری نمی‌کنیم تا برنامه نخوابه
+    }
+}
+connectToMongo();
 // اجرای سرور
 const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log(` Server running on port ${PORT}`);
+app.listen(process.env.PORT || PORT, () => {
+    console.log("🚀 Server is running");
 });

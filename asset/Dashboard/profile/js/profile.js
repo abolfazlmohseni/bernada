@@ -1,12 +1,12 @@
 const phone = JSON.parse(localStorage.getItem('user')).phone || logut();
 async function logut() {
     swal("خطا!", "ابتدا وارد شوید", "error");
-    window.location.href = "https://bernada.ir";
+    window.location.href = "http://localhost:3000";
 };
 // دریافت اطلاعات کاربر از دیتابیس
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch(`https://bernada.ir/api/user/profile/${phone}`, {
+        const response = await fetch(`http://localhost:3000/api/user/profile/${phone}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // نمایش عکس پروفایل (اگر موجود باشه)
             if (image && image !== '/imag/user6.jpg') {
-                document.querySelector('#profilePreview').src = `https://bernada.ir/${image}`;
+                document.querySelector('#profilePreview').src = `http://localhost:3000/${image}`;
             }
         } else {
             swal("خطا!", "مشکلی در دریافت پروفایل پیش آمد.", "error");
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (err) {
         console.log(err);
         await swal("خطا!", "خطای شبکه یا سرور.", "error");
-        window.location.href = "https://bernada.ir"
+        window.location.href = "http://localhost:3000"
     }
 });
 
@@ -70,7 +70,7 @@ document.querySelector('.submit').addEventListener('click', async () => {
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open('PUT', `https://bernada.ir/api/user/profile/${phone}`, true);
+    xhr.open('PUT', `http://localhost:3000/api/user/profile/${phone}`, true);
 
     // دایره و درصد
     const radius = 35;
@@ -156,7 +156,7 @@ changePassBTN.addEventListener("click", async () => {
     }
     try {
 
-        const response = await fetch(`https://bernada.ir/api/user/change-password/${phone}`,
+        const response = await fetch(`http://localhost:3000/api/user/change-password/${phone}`,
             {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
